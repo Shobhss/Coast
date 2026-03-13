@@ -49,7 +49,7 @@ All sample datasets are in the `/data` directory as JSON files:
 
 ## Built By
 
-[Shobhit Dixit](https://www.linkedin.com/in/shobhitdixit/) - MBA/MS AI Candidate, Kellogg School of Management & McCormick School of Engineering, Northwestern University (Class of 2027)
+[Shobhit Dixit](https://www.linkedin.com/in/shobhitdixit/) - MBA AI Candidate, Kellogg School of Management, Northwestern University (Class of 2027)
 
 ---
 
