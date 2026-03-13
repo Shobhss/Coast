@@ -251,19 +251,31 @@ function localAnalyze(msg, data) {
 
 async function callAI(msg, data, extra="", key="") {
   try {
-    const headers = {"Content-Type":"application/json"};
-    if(key) headers["x-api-key"] = key;
+    if(!key) return {exhausted: false, text: localAnalyze(msg, data)};
+    const headers = {
+      "Content-Type":"application/json",
+      "x-api-key": key,
+      "anthropic-version": "2023-06-01",
+      "anthropic-dangerous-direct-browser-access": "true"
+    };
     const res = await fetch("https://api.anthropic.com/v1/messages", {
       method:"POST", headers,
       body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1500, system: SYS+extra, messages:[{role:"user",content: data ? `Query: ${msg}\n\nDATA:\n${JSON.stringify(data)}` : msg}] })
     });
-    if(!res.ok) throw new Error("API error");
+    if(res.status === 429 || res.status === 529) {
+      return {exhausted: true, text: "⚠️ **API rate limit reached.** Your API key has been exhausted or rate-limited. Please wait a moment and try again, or check your Anthropic dashboard for usage limits."};
+    }
+    if(res.status === 401) {
+      return {exhausted: true, text: "⚠️ **Invalid API key.** Please update your API key in settings."};
+    }
+    if(!res.ok) throw new Error("API error " + res.status);
     const d = await res.json();
     const text = d.content?.filter(b=>b.type==="text").map(b=>b.text).join("\n");
     if(!text) throw new Error("Empty response");
-    return text;
+    return {exhausted: false, text};
   } catch(e) {
-    return localAnalyze(msg, data);
+    console.log("API fallback:", e.message);
+    return {exhausted: false, text: localAnalyze(msg, data)};
   }
 }
 
@@ -499,6 +511,7 @@ export default function App() {
   const [sortBy,setSortBy]=useState("risk");
   const [apiKey,setApiKey]=useState("");
   const [showSettings,setShowSettings]=useState(false);
+  const [apiExhausted,setApiExhausted]=useState(false);
   const chatEnd=useRef(null);
   const chatScrollRef=useRef(null);
 
@@ -525,7 +538,8 @@ export default function App() {
     try {
       const data = {crm:a, risk:getR(a.id), txn:getT(a.id), calls:getCalls(a.id), slack:getSlack(a.id), support:getSup(a.id)};
       const reply = await callAI(`Generate intelligence briefing for ${a.name}. Cover: health, risks, activity highlights, transaction patterns, and next actions.`, data, "\nFormat as structured internal briefing. Be concise.", apiKey);
-      setSummary(reply);
+      if(reply.exhausted) setApiExhausted(true);
+      setSummary(reply.text);
     } catch { setSummary("Error generating briefing."); }
     setSumLoading(false);
   }
@@ -543,7 +557,8 @@ export default function App() {
         data = {portfolio:{accounts:D_CRM.length,total_credit:D_CRM.reduce((s,a)=>s+a.credit,0),total_balance:D_CRM.reduce((s,a)=>s+a.bal,0)},crm_summary:D_CRM.map(a=>({name:a.name,ind:a.ind,fleet:a.fleet,tier:a.tier,util:a.util,spend:a.spend,dpd:a.dpd,status:a.status})),risk_summary:D_RISK.map(r=>({name:r.id,score:r.score,level:r.lv,flags:r.fl?.length||0})),txn_summary:D_TXN.map(t=>({id:t.id,spend:t.spend,util:t.util,anomalies:t.a.length}))};
       }
       const reply = await callAI(msg, data, "", apiKey);
-      setMsgs(p=>[...p,{role:"assistant",text:reply}]);
+      if(reply.exhausted) setApiExhausted(true);
+      setMsgs(p=>[...p,{role:"assistant",text:reply.text}]);
     } catch { setMsgs(p=>[...p,{role:"assistant",text:"Connection error."}]); }
     setLoading(false);
   }
@@ -562,8 +577,8 @@ export default function App() {
         <button onClick={()=>{setView("portfolio");setSelAcct(null);}} style={{padding:"5px 12px",border:`1px solid ${view==="portfolio"?C.blue:C.border}`,borderRadius:6,background:view==="portfolio"?C.blueLt:C.white,color:view==="portfolio"?C.blue:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>📊 Portfolio</button>
         <button onClick={()=>setView("chat")} style={{padding:"5px 12px",border:`1px solid ${view==="chat"?C.blue:C.border}`,borderRadius:6,background:view==="chat"?C.blueLt:C.white,color:view==="chat"?C.blue:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>💬 Chat</button>
         <span style={{fontSize:9,fontWeight:600,color:C.blue,background:C.blueLt,padding:"3px 8px",borderRadius:100,marginLeft:4}}>POC</span>
-        <button onClick={()=>setShowSettings(!showSettings)} style={{padding:"5px 10px",border:`1px solid ${apiKey?C.green:C.border}`,borderRadius:6,background:apiKey?C.greenBg:C.white,color:apiKey?C.green:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit",marginLeft:4}}>
-          {apiKey?"🔑 API Connected":"⚙️ Add API Key"}
+        <button onClick={()=>setShowSettings(!showSettings)} style={{padding:"5px 10px",border:`1px solid ${apiExhausted?C.red:apiKey?C.green:C.border}`,borderRadius:6,background:apiExhausted?C.redBg:apiKey?C.greenBg:C.white,color:apiExhausted?C.red:apiKey?C.green:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit",marginLeft:4}}>
+          {apiExhausted?"⚠️ API Exhausted":apiKey?"🔑 API Connected":"⚙️ Add API Key"}
         </button>
       </div>
     </div>
