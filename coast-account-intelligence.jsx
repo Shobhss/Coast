@@ -263,10 +263,10 @@ async function callAI(msg, data, extra="", key="") {
       body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1500, system: SYS+extra, messages:[{role:"user",content: data ? `Query: ${msg}\n\nDATA:\n${JSON.stringify(data)}` : msg}] })
     });
     if(res.status === 429 || res.status === 529) {
-      return {exhausted: true, text: "⚠️ **API rate limit reached.** Your API key has been exhausted or rate-limited. Please wait a moment and try again, or check your Anthropic dashboard for usage limits."};
+      return {exhausted: true, text: "⚠️ **API rate limit reached.** Please wait a moment or check your Anthropic dashboard."};
     }
     if(res.status === 401) {
-      return {exhausted: true, text: "⚠️ **Invalid API key.** Please update your API key in settings."};
+      return {exhausted: true, text: "⚠️ **Invalid API key.** Please update your key in settings."};
     }
     if(!res.ok) throw new Error("API error " + res.status);
     const d = await res.json();
@@ -274,7 +274,6 @@ async function callAI(msg, data, extra="", key="") {
     if(!text) throw new Error("Empty response");
     return {exhausted: false, text};
   } catch(e) {
-    console.log("API fallback:", e.message);
     return {exhausted: false, text: localAnalyze(msg, data)};
   }
 }
@@ -285,7 +284,7 @@ async function callAI(msg, data, extra="", key="") {
 function RiskBadge({level,score}) {
   const m={"Very Low":{bg:C.greenBg,c:C.green,b:"#BBF7D0"},Low:{bg:C.greenBg,c:C.green,b:"#BBF7D0"},"Low-Medium":{bg:C.yellowBg,c:C.yellow,b:"#FDE68A"},Medium:{bg:C.yellowBg,c:C.yellow,b:"#FDE68A"},High:{bg:C.redBg,c:C.red,b:"#FECACA"}};
   const s=m[level]||m.Low;
-  return <span style={{display:"inline-flex",alignItems:"center",gap:3,fontSize:12,fontWeight:600,color:s.c,background:s.bg,border:`1px solid ${s.b}`,padding:"1px 7px",borderRadius:100}}><span style={{width:5,height:5,borderRadius:"50%",background:s.c}}/>{level}{score!==undefined&&` (${score})`}</span>;
+  return <span style={{display:"inline-flex",alignItems:"center",gap:3,fontSize:10,fontWeight:600,color:s.c,background:s.bg,border:`1px solid ${s.b}`,padding:"1px 7px",borderRadius:100}}><span style={{width:5,height:5,borderRadius:"50%",background:s.c}}/>{level}{score!==undefined&&` (${score})`}</span>;
 }
 
 function Spark({data,color=C.blue,h=28}) {
@@ -310,16 +309,16 @@ function DataTabs({acct}) {
   const tabs=[{k:"crm",l:"CRM",i:"📋",n:1},{k:"calls",l:"Calls",i:"📞",n:calls.length},{k:"txn",l:"Transactions",i:"💳",n:t?.cnt||0},{k:"slack",l:"Slack",i:"💬",n:sl.length},{k:"sup",l:"Support",i:"🎫",n:sup.length},{k:"risk",l:"Risk",i:"🛡️",n:r?.fl?.length||0}];
   return <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:10,overflow:"hidden"}}>
     <div style={{padding:"8px 12px",display:"flex",gap:5,overflowX:"auto",borderBottom:`1px solid ${C.border}`,background:C.bg}}>
-      {tabs.map(tb=><button key={tb.k} onClick={()=>setTab(tb.k)} style={{display:"flex",alignItems:"center",gap:5,padding:"5px 10px",border:`1px solid ${tab===tb.k?C.blue:C.border}`,borderRadius:6,background:tab===tb.k?C.blueLt:C.white,color:tab===tb.k?C.blue:C.textMd,fontSize:11,fontWeight:500,cursor:"pointer",fontFamily:"inherit"}}>{tb.i} {tb.l}{tb.n>0&&<span style={{background:tab===tb.k?C.blue:C.border,color:tab===tb.k?C.white:C.textMd,fontSize:11,fontWeight:700,padding:"1px 5px",borderRadius:100}}>{tb.n>999?Math.round(tb.n/1000)+"K":tb.n}</span>}</button>)}
+      {tabs.map(tb=><button key={tb.k} onClick={()=>setTab(tb.k)} style={{display:"flex",alignItems:"center",gap:5,padding:"5px 10px",border:`1px solid ${tab===tb.k?C.blue:C.border}`,borderRadius:6,background:tab===tb.k?C.blueLt:C.white,color:tab===tb.k?C.blue:C.textMd,fontSize:11,fontWeight:500,cursor:"pointer",fontFamily:"inherit"}}>{tb.i} {tb.l}{tb.n>0&&<span style={{background:tab===tb.k?C.blue:C.border,color:tab===tb.k?C.white:C.textMd,fontSize:9,fontWeight:700,padding:"1px 5px",borderRadius:100}}>{tb.n>999?Math.round(tb.n/1000)+"K":tb.n}</span>}</button>)}
     </div>
-    <div style={{padding:14,maxHeight:320,overflowY:"auto",fontSize:14,color:C.textMd,lineHeight:1.5}}>
+    <div style={{padding:14,maxHeight:300,overflowY:"auto",fontSize:12,color:C.textMd,lineHeight:1.5}}>
       {tab==="crm"&&<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px 20px"}}>
-        {[["Company",acct.name],["EIN",acct.ein],["Industry",acct.ind],["HQ",acct.hq],["Fleet",acct.fleet+" vehicles"],["Cards",acct.cards],["Credit",fmt$(acct.credit)],["Balance",fmt$(acct.bal)],["Utilization",acct.util+"%"],["Avg Spend/mo",fmt$(acct.spend)],["Onboarded",acct.onb],["Status",acct.status],["Tier",acct.tier],["AM",acct.am],["Owner",acct.owner],["Years",acct.yrs],["Est Revenue",fmt$(acct.rev)],["Source",acct.src],["Integrations",acct.integ?.join(", ")||"None"]].map(([k,v],i)=><div key={i}><div style={{fontSize:12,color:C.textLt,textTransform:"uppercase",letterSpacing:"0.04em"}}>{k}</div><div style={{fontWeight:500,color:C.text}}>{v}</div></div>)}
+        {[["Company",acct.name],["EIN",acct.ein],["Industry",acct.ind],["HQ",acct.hq],["Fleet",acct.fleet+" vehicles"],["Cards",acct.cards],["Credit",fmt$(acct.credit)],["Balance",fmt$(acct.bal)],["Utilization",acct.util+"%"],["Avg Spend/mo",fmt$(acct.spend)],["Onboarded",acct.onb],["Status",acct.status],["Tier",acct.tier],["AM",acct.am],["Owner",acct.owner],["Years",acct.yrs],["Est Revenue",fmt$(acct.rev)],["Source",acct.src],["Integrations",acct.integ?.join(", ")||"None"]].map(([k,v],i)=><div key={i}><div style={{fontSize:10,color:C.textLt,textTransform:"uppercase",letterSpacing:"0.04em"}}>{k}</div><div style={{fontWeight:500,color:C.text}}>{v}</div></div>)}
       </div>}
       {tab==="calls"&&(calls.length?calls.map((c,i)=><div key={i} style={{padding:"8px 0",borderBottom:i<calls.length-1?`1px solid ${C.border}`:"none"}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:3}}>
           <span style={{fontWeight:600,color:C.text,fontSize:11}}>{c.dt} · {c.rep}</span>
-          <span style={{fontSize:12,color:c.sent==="Evasive"||c.sent==="Pushy"?C.red:c.sent==="Mixed"||c.sent==="Neutral"?C.yellow:C.green,fontWeight:600}}>{c.sent}</span>
+          <span style={{fontSize:10,color:c.sent==="Evasive"||c.sent==="Pushy"?C.red:c.sent==="Mixed"||c.sent==="Neutral"?C.yellow:C.green,fontWeight:600}}>{c.sent}</span>
         </div>
         <div style={{fontSize:11,color:C.textLt}}>{c.who} · {c.dir} · {c.dur}min</div>
         <div style={{marginTop:4,fontSize:11}}>{c.sum}</div>
@@ -327,38 +326,38 @@ function DataTabs({acct}) {
       </div>):<div style={{color:C.textLt,fontStyle:"italic"}}>No recorded calls for this account.</div>)}
       {tab==="txn"&&t&&<div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10,marginBottom:12}}>
-          {[["Spend",fmt$(t.spend)],["Transactions",t.cnt],["Utilization",t.util+"%"]].map(([l,v],i)=><div key={i} style={{background:C.bg,padding:8,borderRadius:6}}><div style={{fontSize:12,color:C.textLt}}>{l}</div><div style={{fontSize:20,fontWeight:700,color:l==="Utilization"&&t.util>60?C.red:C.text}}>{v}</div></div>)}
+          {[["Spend",fmt$(t.spend)],["Transactions",t.cnt],["Utilization",t.util+"%"]].map(([l,v],i)=><div key={i} style={{background:C.bg,padding:8,borderRadius:6}}><div style={{fontSize:10,color:C.textLt}}>{l}</div><div style={{fontSize:16,fontWeight:700,color:l==="Utilization"&&t.util>60?C.red:C.text}}>{v}</div></div>)}
         </div>
-        <div style={{marginBottom:10}}><div style={{fontSize:12,fontWeight:600,color:C.textLt,marginBottom:3}}>SPEND TREND</div><Spark data={t.t} color={t.util>60?C.red:C.blue}/></div>
-        <div style={{fontSize:12,fontWeight:600,color:C.textLt,marginBottom:4}}>TOP MERCHANTS</div>
+        <div style={{marginBottom:10}}><div style={{fontSize:10,fontWeight:600,color:C.textLt,marginBottom:3}}>SPEND TREND</div><Spark data={t.t} color={t.util>60?C.red:C.blue}/></div>
+        <div style={{fontSize:10,fontWeight:600,color:C.textLt,marginBottom:4}}>TOP MERCHANTS</div>
         {t.m?.map((m,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"3px 0",borderBottom:`1px solid ${C.border}`}}><span style={{fontWeight:500,color:m.merchant?.includes("UNKNOWN")?C.red:C.text}}>{m.merchant}</span><span style={{fontWeight:600}}>{fmt$(m.spend)}</span></div>)}
-        {t.a?.length>0&&<div style={{marginTop:10}}><div style={{fontSize:12,fontWeight:600,color:C.red,marginBottom:4}}>ANOMALIES</div>
+        {t.a?.length>0&&<div style={{marginTop:10}}><div style={{fontSize:10,fontWeight:600,color:C.red,marginBottom:4}}>ANOMALIES</div>
           {t.a.map((a,i)=><div key={i} style={{display:"flex",gap:5,alignItems:"start",marginBottom:3}}><span style={{fontSize:9,fontWeight:700,color:a.severity==="Critical"?C.red:a.severity==="High"?C.orange:C.yellow,background:a.severity==="Critical"?C.redBg:a.severity==="High"?"#FFF7ED":C.yellowBg,padding:"1px 4px",borderRadius:3,whiteSpace:"nowrap"}}>{a.severity}</span><span style={{fontSize:11}}>{a.detail}</span></div>)}
         </div>}
       </div>}
       {tab==="slack"&&(sl.length?sl.map((s,i)=><div key={i} style={{padding:"8px 0",borderBottom:i<sl.length-1?`1px solid ${C.border}`:"none"}}>
-        <div style={{display:"flex",justifyContent:"space-between",marginBottom:2}}><span style={{fontWeight:600,color:C.text,fontSize:11}}>{s.ch}</span><span style={{fontSize:12,color:C.textLt}}>{s.dt}</span></div>
-        <div style={{fontSize:12,color:C.blue,marginBottom:3}}>{s.fr}</div>
+        <div style={{display:"flex",justifyContent:"space-between",marginBottom:2}}><span style={{fontWeight:600,color:C.text,fontSize:11}}>{s.ch}</span><span style={{fontSize:10,color:C.textLt}}>{s.dt}</span></div>
+        <div style={{fontSize:10,color:C.blue,marginBottom:3}}>{s.fr}</div>
         <div style={{fontSize:11}}>{s.msg}</div>
-        {s.res&&<div style={{fontSize:12,color:C.green,marginTop:3,fontStyle:"italic"}}>→ {s.res}</div>}
+        {s.res&&<div style={{fontSize:10,color:C.green,marginTop:3,fontStyle:"italic"}}>→ {s.res}</div>}
       </div>):<div style={{color:C.textLt,fontStyle:"italic"}}>No Slack mentions for this account.</div>)}
       {tab==="sup"&&(sup.length?sup.map((s,i)=><div key={i} style={{padding:"8px 0",borderBottom:i<sup.length-1?`1px solid ${C.border}`:"none"}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:2}}>
           <span style={{fontWeight:600,color:C.text,fontSize:11}}>{s.tid} · {s.subj}</span>
           <span style={{fontSize:9,fontWeight:600,color:s.st?.includes("Hold")?C.red:s.st==="In Progress"?C.yellow:C.green,background:s.st?.includes("Hold")?C.redBg:s.st==="In Progress"?C.yellowBg:C.greenBg,padding:"1px 5px",borderRadius:3}}>{s.st}</span>
         </div>
-        <div style={{fontSize:12,color:C.textLt}}>{s.dt} · {s.pri}</div>
+        <div style={{fontSize:10,color:C.textLt}}>{s.dt} · {s.pri}</div>
         <div style={{fontSize:11,marginTop:3}}>{s.res||"Pending"}</div>
-        {s.sat&&<div style={{fontSize:12,marginTop:2,color:C.textLt}}>{"⭐".repeat(s.sat)}</div>}
+        {s.sat&&<div style={{fontSize:10,marginTop:2,color:C.textLt}}>{"⭐".repeat(s.sat)}</div>}
       </div>):<div style={{color:C.textLt,fontStyle:"italic"}}>No support tickets for this account.</div>)}
       {tab==="risk"&&r&&<div>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:10}}>
-          <RiskBadge level={r.lv} score={r.score}/><span style={{fontSize:12,color:C.textLt}}>KYB: {r.kyb}</span>
+          <RiskBadge level={r.lv} score={r.score}/><span style={{fontSize:10,color:C.textLt}}>KYB: {r.kyb}</span>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px 20px",marginBottom:10}}>
-          {[["FMCSA Match",r.fm===true?"✅":r.fm===false?"❌":"N/A"],["FMCSA Units",r.fu||"N/A"],["Stated Fleet",r.sf],["Bank Docs",r.bank===true?"✅":String(r.bank)],["Tamper",r.tamp===false?"✅ Clear":String(r.tamp)],["Domain Age",r.dom+"y"],["Reviews",`${r.gr} (${r.grt||"-"}⭐)`],["BBB",r.bbb||"None"],["Payment Score",r.ps+"/100"]].map(([k,v],i)=><div key={i}><div style={{fontSize:11,color:C.textLt,textTransform:"uppercase"}}>{k}</div><div style={{fontWeight:500,color:C.text,fontSize:13}}>{v}</div></div>)}
+          {[["FMCSA Match",r.fm===true?"✅":r.fm===false?"❌":"N/A"],["FMCSA Units",r.fu||"N/A"],["Stated Fleet",r.sf],["Bank Docs",r.bank===true?"✅":String(r.bank)],["Tamper",r.tamp===false?"✅ Clear":String(r.tamp)],["Domain Age",r.dom+"y"],["Reviews",`${r.gr} (${r.grt||"-"}⭐)`],["BBB",r.bbb||"None"],["Payment Score",r.ps+"/100"]].map(([k,v],i)=><div key={i}><div style={{fontSize:9,color:C.textLt,textTransform:"uppercase"}}>{k}</div><div style={{fontWeight:500,color:C.text,fontSize:11}}>{v}</div></div>)}
         </div>
-        {r.fl?.length>0&&<><div style={{fontSize:12,fontWeight:600,color:r.fl.length>3?C.red:C.textLt,marginBottom:4}}>FLAGS ({r.fl.length})</div>
+        {r.fl?.length>0&&<><div style={{fontSize:10,fontWeight:600,color:r.fl.length>3?C.red:C.textLt,marginBottom:4}}>FLAGS ({r.fl.length})</div>
           {r.fl.map((f,i)=><div key={i} style={{fontSize:11,padding:"2px 0 2px 8px",borderLeft:`2px solid ${r.score>50?C.red:C.yellow}`,marginBottom:3}}>{f}</div>)}</>}
         <div style={{marginTop:10,padding:8,background:r.score>50?C.redBg:C.greenBg,borderRadius:6,fontSize:11,lineHeight:1.4}}>{r.sum}</div>
       </div>}
@@ -397,13 +396,13 @@ function Portfolio() {
 
   return <div style={{padding:20,overflowY:"auto",height:"100%"}}>
     <h2 style={{fontSize:16,fontWeight:700,color:C.navy,margin:"0 0 4px"}}>Portfolio Dashboard</h2>
-    <p style={{fontSize:16,color:C.textLt,margin:"0 0 16px"}}>{stats.totalAccounts} accounts · {D_CRM.reduce((s,a)=>s+a.fleet,0)} total vehicles · Last updated Mar 13, 2025</p>
+    <p style={{fontSize:12,color:C.textLt,margin:"0 0 16px"}}>{stats.totalAccounts} accounts · {D_CRM.reduce((s,a)=>s+a.fleet,0)} total vehicles · Last updated Mar 13, 2025</p>
 
     {/* KPI Row */}
     <div style={{display:"grid",gridTemplateColumns:"repeat(5,1fr)",gap:10,marginBottom:16}}>
       {[["Total Exposure",fmt$(stats.totalCredit),C.text],["Outstanding",fmt$(stats.totalBal),C.text],["Monthly Spend",fmt$(stats.totalSpend),C.blue],["Avg Utilization",stats.avgUtil+"%",stats.avgUtil>50?C.yellow:C.text],["High Risk",stats.highRisk.length+" accounts",C.red]].map(([l,v,c],i)=>
         <div key={i} style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:12}}>
-          <div style={{fontSize:12,color:C.textLt,textTransform:"uppercase",letterSpacing:"0.04em"}}>{l}</div>
+          <div style={{fontSize:10,color:C.textLt,textTransform:"uppercase",letterSpacing:"0.04em"}}>{l}</div>
           <div style={{fontSize:20,fontWeight:700,color:c,marginTop:2}}>{v}</div>
         </div>
       )}
@@ -412,11 +411,11 @@ function Portfolio() {
     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:16}}>
       {/* Risk Distribution */}
       <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontSize:16,fontWeight:700,color:C.navy,marginBottom:10}}>Risk Distribution</div>
+        <div style={{fontSize:12,fontWeight:700,color:C.navy,marginBottom:10}}>Risk Distribution</div>
         {riskOrder.filter(k=>stats.riskDist[k]).map(k=>{
           const pct=Math.round(stats.riskDist[k]/stats.totalAccounts*100);
           return <div key={k} style={{marginBottom:6}}>
-            <div style={{display:"flex",justifyContent:"space-between",fontSize:13,marginBottom:2}}>
+            <div style={{display:"flex",justifyContent:"space-between",fontSize:11,marginBottom:2}}>
               <span style={{color:C.text,fontWeight:500}}>{k}</span>
               <span style={{color:C.textMd}}>{stats.riskDist[k]} ({pct}%)</span>
             </div>
@@ -429,7 +428,7 @@ function Portfolio() {
 
       {/* Tier Breakdown */}
       <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontSize:16,fontWeight:700,color:C.navy,marginBottom:10}}>By Tier</div>
+        <div style={{fontSize:12,fontWeight:700,color:C.navy,marginBottom:10}}>By Tier</div>
         {Object.entries(stats.byTier).sort((a,b)=>b[1].spend-a[1].spend).map(([tier,d])=>
           <div key={tier} style={{display:"flex",justifyContent:"space-between",padding:"6px 0",borderBottom:`1px solid ${C.border}`,fontSize:11}}>
             <span style={{fontWeight:600,color:C.text}}>{tier}</span>
@@ -446,7 +445,7 @@ function Portfolio() {
     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:16}}>
       {/* Alerts */}
       <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontSize:16,fontWeight:700,color:C.red,marginBottom:8}}>⚠️ Accounts Needing Attention ({stats.highRisk.length + stats.delinquent.length + stats.lowActivation.length})</div>
+        <div style={{fontSize:12,fontWeight:700,color:C.red,marginBottom:8}}>⚠️ Accounts Needing Attention ({stats.highRisk.length + stats.delinquent.length + stats.lowActivation.length})</div>
         {stats.highRisk.map(r=>{const a=D_CRM.find(c=>c.id===r.id);return a&&<div key={r.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",borderBottom:`1px solid ${C.border}`,fontSize:11}}>
           <div><span style={{fontWeight:600,color:C.text}}>{a.name}</span><span style={{color:C.textLt,marginLeft:6}}>{a.ind}</span></div>
           <RiskBadge level={r.lv} score={r.score}/>
@@ -454,25 +453,25 @@ function Portfolio() {
         {stats.delinquent.filter(a=>!stats.highRisk.find(r=>r.id===a.id)).map(a=>
           <div key={a.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",borderBottom:`1px solid ${C.border}`,fontSize:11}}>
             <span style={{fontWeight:600,color:C.text}}>{a.name}</span>
-            <span style={{fontSize:16,color:C.orange,fontWeight:600}}>{a.dpd} days past due</span>
+            <span style={{fontSize:10,color:C.orange,fontWeight:600}}>{a.dpd} days past due</span>
           </div>
         )}
         {stats.lowActivation.map(a=>
           <div key={a.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"5px 0",borderBottom:`1px solid ${C.border}`,fontSize:11}}>
             <span style={{fontWeight:600,color:C.text}}>{a.name}</span>
-            <span style={{fontSize:16,color:C.yellow,fontWeight:600}}>Low activation</span>
+            <span style={{fontSize:10,color:C.yellow,fontWeight:600}}>Low activation</span>
           </div>
         )}
       </div>
 
       {/* Anomalies */}
       <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontSize:16,fontWeight:700,color:C.navy,marginBottom:8}}>Transaction Anomalies</div>
+        <div style={{fontSize:12,fontWeight:700,color:C.navy,marginBottom:8}}>Transaction Anomalies</div>
         <div style={{display:"flex",gap:12,marginBottom:10}}>
-          <div style={{background:C.redBg,padding:8,borderRadius:6,flex:1,textAlign:"center"}}><div style={{fontSize:18,fontWeight:700,color:C.red}}>{stats.critAnomalies}</div><div style={{fontSize:16,color:C.red}}>Critical/High</div></div>
-          <div style={{background:C.yellowBg,padding:8,borderRadius:6,flex:1,textAlign:"center"}}><div style={{fontSize:18,fontWeight:700,color:C.yellow}}>{stats.totalAnomalies-stats.critAnomalies}</div><div style={{fontSize:16,color:C.yellow}}>Medium/Low</div></div>
+          <div style={{background:C.redBg,padding:8,borderRadius:6,flex:1,textAlign:"center"}}><div style={{fontSize:18,fontWeight:700,color:C.red}}>{stats.critAnomalies}</div><div style={{fontSize:10,color:C.red}}>Critical/High</div></div>
+          <div style={{background:C.yellowBg,padding:8,borderRadius:6,flex:1,textAlign:"center"}}><div style={{fontSize:18,fontWeight:700,color:C.yellow}}>{stats.totalAnomalies-stats.critAnomalies}</div><div style={{fontSize:10,color:C.yellow}}>Medium/Low</div></div>
         </div>
-        {D_TXN.filter(t=>t.a.some(a=>a.severity==="Critical"||a.severity==="High")).slice(0,5).map(t=>{const a=D_CRM.find(c=>c.id===t.id);return <div key={t.id} style={{fontSize:13,padding:"4px 0",borderBottom:`1px solid ${C.border}`}}>
+        {D_TXN.filter(t=>t.a.some(a=>a.severity==="Critical"||a.severity==="High")).slice(0,5).map(t=>{const a=D_CRM.find(c=>c.id===t.id);return <div key={t.id} style={{fontSize:11,padding:"4px 0",borderBottom:`1px solid ${C.border}`}}>
           <span style={{fontWeight:600,color:C.text}}>{a?.name}: </span>
           <span style={{color:C.red}}>{t.a.find(x=>x.severity==="Critical"||x.severity==="High")?.detail}</span>
         </div>;})}
@@ -481,7 +480,7 @@ function Portfolio() {
 
     {/* Industry */}
     <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-      <div style={{fontSize:16,fontWeight:700,color:C.navy,marginBottom:8}}>By Industry</div>
+      <div style={{fontSize:12,fontWeight:700,color:C.navy,marginBottom:8}}>By Industry</div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))",gap:8}}>
         {Object.entries(stats.byIndustry).sort((a,b)=>b[1].spend-a[1].spend).map(([ind,d])=>
           <div key={ind} style={{background:C.bg,padding:8,borderRadius:6,fontSize:11}}>
@@ -517,12 +516,8 @@ export default function App() {
 
   useEffect(()=>{
     setTimeout(()=>{
-      if(chatEnd.current) {
-        chatEnd.current.scrollIntoView({behavior:"smooth",block:"end"});
-      }
-      if(chatScrollRef.current) {
-        chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
-      }
+      if(chatEnd.current) chatEnd.current.scrollIntoView({behavior:"smooth",block:"end"});
+      if(chatScrollRef.current) chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
     }, 100);
   },[msgs,loading]);
 
@@ -561,7 +556,6 @@ export default function App() {
       if(acct) {
         data = {crm:acct, risk:getR(acct.id), txn:getT(acct.id), calls:getCalls(acct.id), slack:getSlack(acct.id), support:getSup(acct.id)};
       } else {
-        // Always pass portfolio data for non-account-specific queries
         data = {
           portfolio:{accounts:D_CRM.length, total_credit:D_CRM.reduce((s,a)=>s+a.credit,0), total_balance:D_CRM.reduce((s,a)=>s+a.bal,0), total_spend:D_TXN.reduce((s,t)=>s+t.spend,0), total_vehicles:D_CRM.reduce((s,a)=>s+a.fleet,0)},
           all_accounts:D_CRM.map(a=>{const r=getR(a.id),t=getT(a.id);return{name:a.name,id:a.id,ind:a.ind,fleet:a.fleet,tier:a.tier,util:a.util,spend:a.spend,dpd:a.dpd,status:a.status,credit:a.credit,bal:a.bal,otp:a.otp,owner:a.owner,am:a.am,risk_score:r?.score,risk_level:r?.lv,flags:r?.fl,anomalies:t?.a?.length||0};}),
@@ -576,19 +570,19 @@ export default function App() {
 
   const quickQs = ["Portfolio risk overview","Which accounts need immediate attention?","Compare risk by acquisition channel","Top 5 highest spend accounts","Which industries have highest fraud signals?","Activation rate analysis","Show me all delinquent accounts","What's our total credit exposure?"];
 
-  return <div style={{background:C.bg,minHeight:"100vh",fontFamily:"'Inter','SF Pro Display',-apple-system,sans-serif",fontSize:16,color:C.textMd}}>
+  return <div style={{background:C.bg,minHeight:"100vh",fontFamily:"'Inter','SF Pro Display',-apple-system,sans-serif",fontSize:13,color:C.textMd}}>
     {/* Header */}
     <div style={{background:C.white,borderBottom:`1px solid ${C.border}`,padding:"10px 20px",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
       <div style={{display:"flex",alignItems:"center",gap:10}}>
         <div style={{width:28,height:28,borderRadius:6,background:C.blue,display:"flex",alignItems:"center",justifyContent:"center",color:C.white,fontWeight:800,fontSize:14}}>C</div>
-        <div><div style={{fontWeight:700,fontSize:16,color:C.navy,letterSpacing:"-0.02em"}}>Coast Account Intelligence</div>
-          <div style={{fontSize:16,color:C.textLt}}>6 data sources · {D_CRM.length} accounts · AI-powered</div></div>
+        <div><div style={{fontWeight:700,fontSize:14,color:C.navy,letterSpacing:"-0.02em"}}>Coast Account Intelligence</div>
+          <div style={{fontSize:10,color:C.textLt}}>6 data sources · {D_CRM.length} accounts · AI-powered</div></div>
       </div>
       <div style={{display:"flex",gap:6,alignItems:"center"}}>
-        <button onClick={()=>{setView("portfolio");setSelAcct(null);}} style={{padding:"5px 12px",border:`1px solid ${view==="portfolio"?C.blue:C.border}`,borderRadius:6,background:view==="portfolio"?C.blueLt:C.white,color:view==="portfolio"?C.blue:C.textMd,fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>📊 Portfolio</button>
-        <button onClick={()=>setView("chat")} style={{padding:"5px 12px",border:`1px solid ${view==="chat"?C.blue:C.border}`,borderRadius:6,background:view==="chat"?C.blueLt:C.white,color:view==="chat"?C.blue:C.textMd,fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>💬 Chat</button>
-        <span style={{fontSize:13,fontWeight:600,color:C.blue,background:C.blueLt,padding:"3px 8px",borderRadius:100,marginLeft:4}}>POC</span>
-        <button onClick={()=>setShowSettings(!showSettings)} style={{padding:"5px 10px",border:`1px solid ${apiExhausted?C.red:apiKey?C.green:C.border}`,borderRadius:6,background:apiExhausted?C.redBg:apiKey?C.greenBg:C.white,color:apiExhausted?C.red:apiKey?C.green:C.textMd,fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:"inherit",marginLeft:4}}>
+        <button onClick={()=>{setView("portfolio");setSelAcct(null);}} style={{padding:"5px 12px",border:`1px solid ${view==="portfolio"?C.blue:C.border}`,borderRadius:6,background:view==="portfolio"?C.blueLt:C.white,color:view==="portfolio"?C.blue:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>📊 Portfolio</button>
+        <button onClick={()=>setView("chat")} style={{padding:"5px 12px",border:`1px solid ${view==="chat"?C.blue:C.border}`,borderRadius:6,background:view==="chat"?C.blueLt:C.white,color:view==="chat"?C.blue:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>💬 Chat</button>
+        <span style={{fontSize:9,fontWeight:600,color:C.blue,background:C.blueLt,padding:"3px 8px",borderRadius:100,marginLeft:4}}>POC</span>
+        <button onClick={()=>setShowSettings(!showSettings)} style={{padding:"5px 10px",border:`1px solid ${apiExhausted?C.red:apiKey?C.green:C.border}`,borderRadius:6,background:apiExhausted?C.redBg:apiKey?C.greenBg:C.white,color:apiExhausted?C.red:apiKey?C.green:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit",marginLeft:4}}>
           {apiExhausted?"⚠️ API Exhausted":apiKey?"🔑 API Connected":"⚙️ Add API Key"}
         </button>
       </div>
@@ -598,14 +592,14 @@ export default function App() {
     {showSettings&&<div style={{position:"fixed",top:0,left:0,right:0,bottom:0,background:"rgba(0,0,0,0.3)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}} onClick={()=>setShowSettings(false)}>
       <div style={{background:C.white,borderRadius:12,padding:24,width:420,maxWidth:"90vw",boxShadow:"0 20px 60px rgba(0,0,0,0.15)"}} onClick={e=>e.stopPropagation()}>
         <div style={{fontWeight:700,fontSize:16,color:C.navy,marginBottom:4}}>API Configuration</div>
-        <div style={{fontSize:16,color:C.textLt,marginBottom:16}}>Add your Anthropic API key to enable AI-powered analysis. Without it, the app uses local analysis.</div>
-        <div style={{fontSize:13,fontWeight:600,color:C.textMd,marginBottom:4}}>Anthropic API Key</div>
+        <div style={{fontSize:12,color:C.textLt,marginBottom:16}}>Add your Anthropic API key to enable AI-powered analysis. Without it, the app uses local analysis.</div>
+        <div style={{fontSize:11,fontWeight:600,color:C.textMd,marginBottom:4}}>Anthropic API Key</div>
         <input value={apiKey} onChange={e=>setApiKey(e.target.value)} placeholder="sk-ant-..." type="password"
           style={{width:"100%",padding:"10px 12px",border:`1px solid ${C.border}`,borderRadius:8,fontSize:13,color:C.text,outline:"none",fontFamily:"inherit",background:C.bg,boxSizing:"border-box",marginBottom:12}}/>
-        <div style={{fontSize:16,color:C.textLt,marginBottom:16}}>Your key is stored in memory only and never sent anywhere except Anthropic's API. It is not persisted.</div>
+        <div style={{fontSize:10,color:C.textLt,marginBottom:16}}>Your key is stored in memory only and never sent anywhere except Anthropic's API. It is not persisted.</div>
         <div style={{display:"flex",gap:8,justifyContent:"flex-end"}}>
-          {apiKey&&<button onClick={()=>{setApiKey("");}} style={{padding:"8px 16px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.red,fontSize:16,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>Clear Key</button>}
-          <button onClick={()=>setShowSettings(false)} style={{padding:"8px 16px",border:"none",borderRadius:6,background:C.blue,color:C.white,fontSize:16,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>{apiKey?"Save & Close":"Close"}</button>
+          {apiKey&&<button onClick={()=>{setApiKey("");}} style={{padding:"8px 16px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.red,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>Clear Key</button>}
+          <button onClick={()=>setShowSettings(false)} style={{padding:"8px 16px",border:"none",borderRadius:6,background:C.blue,color:C.white,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>{apiKey?"Save & Close":"Close"}</button>
         </div>
       </div>
     </div>}
@@ -614,27 +608,27 @@ export default function App() {
       {/* Sidebar */}
       <div style={{width:270,background:C.white,borderRight:`1px solid ${C.border}`,display:"flex",flexDirection:"column",flexShrink:0}}>
         <div style={{padding:"10px 12px",borderBottom:`1px solid ${C.border}`}}>
-          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search accounts..." style={{width:"100%",padding:"6px 10px",border:`1px solid ${C.border}`,borderRadius:6,fontSize:13,color:C.text,outline:"none",fontFamily:"inherit",background:C.bg,boxSizing:"border-box"}}/>
+          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search accounts..." style={{width:"100%",padding:"6px 10px",border:`1px solid ${C.border}`,borderRadius:6,fontSize:11,color:C.text,outline:"none",fontFamily:"inherit",background:C.bg,boxSizing:"border-box"}}/>
           <div style={{display:"flex",gap:4,marginTop:6,flexWrap:"wrap"}}>
-            {["All","High","Medium","Low-Medium","Low","Very Low"].map(r=><button key={r} onClick={()=>setFilterRisk(r)} style={{fontSize:13,padding:"2px 6px",border:`1px solid ${filterRisk===r?C.blue:C.border}`,borderRadius:4,background:filterRisk===r?C.blueLt:C.white,color:filterRisk===r?C.blue:C.textLt,cursor:"pointer",fontFamily:"inherit"}}>{r}</button>)}
+            {["All","High","Medium","Low-Medium","Low","Very Low"].map(r=><button key={r} onClick={()=>setFilterRisk(r)} style={{fontSize:9,padding:"2px 6px",border:`1px solid ${filterRisk===r?C.blue:C.border}`,borderRadius:4,background:filterRisk===r?C.blueLt:C.white,color:filterRisk===r?C.blue:C.textLt,cursor:"pointer",fontFamily:"inherit"}}>{r}</button>)}
           </div>
           <div style={{display:"flex",gap:4,marginTop:4}}>
-            {["All","Enterprise","Growth","Standard"].map(t=><button key={t} onClick={()=>setFilterTier(t)} style={{fontSize:13,padding:"2px 6px",border:`1px solid ${filterTier===t?C.blue:C.border}`,borderRadius:4,background:filterTier===t?C.blueLt:C.white,color:filterTier===t?C.blue:C.textLt,cursor:"pointer",fontFamily:"inherit"}}>{t}</button>)}
+            {["All","Enterprise","Growth","Standard"].map(t=><button key={t} onClick={()=>setFilterTier(t)} style={{fontSize:9,padding:"2px 6px",border:`1px solid ${filterTier===t?C.blue:C.border}`,borderRadius:4,background:filterTier===t?C.blueLt:C.white,color:filterTier===t?C.blue:C.textLt,cursor:"pointer",fontFamily:"inherit"}}>{t}</button>)}
           </div>
           <div style={{display:"flex",gap:4,marginTop:4,alignItems:"center"}}>
-            <span style={{fontSize:13,color:C.textLt}}>Sort:</span>
-            {[["risk","Risk"],["spend","Spend"],["util","Util"],["name","A-Z"]].map(([k,l])=><button key={k} onClick={()=>setSortBy(k)} style={{fontSize:13,padding:"2px 6px",border:`1px solid ${sortBy===k?C.blue:C.border}`,borderRadius:4,background:sortBy===k?C.blueLt:C.white,color:sortBy===k?C.blue:C.textLt,cursor:"pointer",fontFamily:"inherit"}}>{l}</button>)}
+            <span style={{fontSize:9,color:C.textLt}}>Sort:</span>
+            {[["risk","Risk"],["spend","Spend"],["util","Util"],["name","A-Z"]].map(([k,l])=><button key={k} onClick={()=>setSortBy(k)} style={{fontSize:9,padding:"2px 6px",border:`1px solid ${sortBy===k?C.blue:C.border}`,borderRadius:4,background:sortBy===k?C.blueLt:C.white,color:sortBy===k?C.blue:C.textLt,cursor:"pointer",fontFamily:"inherit"}}>{l}</button>)}
           </div>
         </div>
-        <div style={{fontSize:16,color:C.textLt,padding:"6px 12px"}}>{filtered.length} accounts</div>
+        <div style={{fontSize:10,color:C.textLt,padding:"6px 12px"}}>{filtered.length} accounts</div>
         <div style={{flex:1,overflowY:"auto"}}>
           {filtered.map(a=>{const r=getR(a.id),t=getT(a.id),sel=selAcct?.id===a.id;return <div key={a.id} onClick={()=>selectAcct(a)} style={{padding:"9px 12px",margin:"0 6px 3px",borderRadius:6,cursor:"pointer",background:sel?C.blueLt:"transparent",border:`1px solid ${sel?C.blue+"30":"transparent"}`,transition:"all 0.1s"}}
             onMouseEnter={e=>{if(!sel)e.currentTarget.style.background=C.bg;}} onMouseLeave={e=>{if(!sel)e.currentTarget.style.background="transparent";}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"start",marginBottom:3}}>
-              <div style={{fontWeight:600,fontSize:16,color:C.text,lineHeight:1.2,maxWidth:160}}>{a.name}</div>
+              <div style={{fontWeight:600,fontSize:12,color:C.text,lineHeight:1.2,maxWidth:160}}>{a.name}</div>
               <RiskBadge level={r?.lv} score={r?.score}/>
             </div>
-            <div style={{fontSize:16,color:C.textLt,marginBottom:4}}>{a.fleet}v · {a.ind} · {a.tier}</div>
+            <div style={{fontSize:10,color:C.textLt,marginBottom:4}}>{a.fleet}v · {a.ind} · {a.tier}</div>
             <div style={{display:"flex",gap:12,fontSize:10}}>
               <span><span style={{color:C.textLt}}>Spend </span><span style={{fontWeight:600,color:C.text}}>{fmt$(t?.spend||0)}</span></span>
               <span><span style={{color:C.textLt}}>Util </span><span style={{fontWeight:600,color:(t?.util||0)>60?C.red:C.text}}>{t?.util||0}%</span></span>
@@ -650,17 +644,17 @@ export default function App() {
 
         {view==="account"&&selAcct&&<>
           <div style={{padding:"12px 18px",background:C.white,borderBottom:`1px solid ${C.border}`,display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-            <div><div style={{fontWeight:700,fontSize:16,color:C.navy}}>{selAcct.name}</div>
-              <div style={{fontSize:13,color:C.textLt}}>{selAcct.id} · {selAcct.ind} · {selAcct.hq}</div></div>
-            <div style={{display:"flex",gap:5}}>{["CRM","Calls","Txns","Slack","Support","Risk"].map((s,i)=><span key={i} style={{fontSize:13,background:C.blueLt,color:C.blue,padding:"2px 5px",borderRadius:3,fontWeight:600}}>{s}</span>)}</div>
+            <div><div style={{fontWeight:700,fontSize:15,color:C.navy}}>{selAcct.name}</div>
+              <div style={{fontSize:11,color:C.textLt}}>{selAcct.id} · {selAcct.ind} · {selAcct.hq}</div></div>
+            <div style={{display:"flex",gap:5}}>{["CRM","Calls","Txns","Slack","Support","Risk"].map((s,i)=><span key={i} style={{fontSize:9,background:C.blueLt,color:C.blue,padding:"2px 5px",borderRadius:3,fontWeight:600}}>{s}</span>)}</div>
           </div>
           <div style={{flex:1,overflow:"auto",padding:16}}>
             <DataTabs acct={selAcct}/>
             <div style={{marginTop:12,background:C.white,border:`1px solid ${C.border}`,borderRadius:10,overflow:"hidden"}}>
               <div style={{padding:"8px 12px",background:C.bg,borderBottom:`1px solid ${C.border}`,display:"flex",alignItems:"center",gap:6}}>
-                <span style={{fontSize:13}}>🤖</span><span style={{fontWeight:600,fontSize:13,color:C.navy}}>AI Briefing</span><span style={{fontSize:16,color:C.textLt}}>Synthesized from 6 sources</span>
+                <span style={{fontSize:13}}>🤖</span><span style={{fontWeight:600,fontSize:11,color:C.navy}}>AI Briefing</span><span style={{fontSize:10,color:C.textLt}}>Synthesized from 6 sources</span>
               </div>
-              <div style={{padding:14,fontSize:16,lineHeight:1.5,color:C.textMd}}>
+              <div style={{padding:14,fontSize:12,lineHeight:1.5,color:C.textMd}}>
                 {sumLoading?<div style={{display:"flex",alignItems:"center",gap:6,color:C.blue,fontSize:11}}>
                   <div style={{width:14,height:14,border:`2px solid ${C.blueLt}`,borderTopColor:C.blue,borderRadius:"50%",animation:"spin 0.8s linear infinite"}}/> Analyzing {selAcct.name}...
                   <style>{"@keyframes spin{to{transform:rotate(360deg)}}"}</style>
@@ -677,17 +671,17 @@ export default function App() {
               <h1 style={{fontSize:20,fontWeight:700,color:C.navy,margin:"0 0 6px"}}>Ask about any account or the portfolio</h1>
               <p style={{color:C.textLt,fontSize:13,margin:"0 0 20px"}}>I synthesize CRM, calls, transactions, Slack, support, and risk data across {D_CRM.length} accounts.{!apiKey&&" Add your API key via ⚙️ for AI-powered responses."}</p>
               <div style={{display:"flex",flexWrap:"wrap",gap:6,justifyContent:"center"}}>
-                {quickQs.map((q,i)=><button key={i} onClick={()=>setInput(q)} style={{padding:"6px 12px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.textMd,fontSize:13,cursor:"pointer",fontFamily:"inherit",transition:"all 0.1s"}}
+                {quickQs.map((q,i)=><button key={i} onClick={()=>setInput(q)} style={{padding:"6px 12px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.textMd,fontSize:11,cursor:"pointer",fontFamily:"inherit",transition:"all 0.1s"}}
                   onMouseEnter={e=>{e.currentTarget.style.borderColor=C.blue;e.currentTarget.style.color=C.blue;}}
                   onMouseLeave={e=>{e.currentTarget.style.borderColor=C.border;e.currentTarget.style.color=C.textMd;}}>{q}</button>)}
               </div>
             </div>:<div style={{maxWidth:660,margin:"0 auto"}}>
               {msgs.map((m,i)=><div key={i} style={{marginBottom:12,display:"flex",justifyContent:m.role==="user"?"flex-end":"flex-start"}}>
-                <div style={{maxWidth:"85%",padding:"8px 12px",borderRadius:10,background:m.role==="user"?C.blue:C.white,color:m.role==="user"?C.white:C.textMd,border:m.role==="user"?"none":`1px solid ${C.border}`,fontSize:16,lineHeight:1.5}}>
+                <div style={{maxWidth:"85%",padding:"8px 12px",borderRadius:10,background:m.role==="user"?C.blue:C.white,color:m.role==="user"?C.white:C.textMd,border:m.role==="user"?"none":`1px solid ${C.border}`,fontSize:12,lineHeight:1.5}}>
                   {m.role==="assistant"?<Md text={m.text}/>:m.text}
                 </div>
               </div>)}
-              {loading&&<div style={{display:"flex",gap:6,alignItems:"center",color:C.blue,fontSize:13,padding:"6px 0"}}>
+              {loading&&<div style={{display:"flex",gap:6,alignItems:"center",color:C.blue,fontSize:11,padding:"6px 0"}}>
                 <div style={{width:12,height:12,border:`2px solid ${C.blueLt}`,borderTopColor:C.blue,borderRadius:"50%",animation:"spin 0.8s linear infinite"}}/>Searching {D_CRM.length} accounts across 6 sources...</div>}
               <div ref={chatEnd}/>
             </div>}
@@ -696,8 +690,8 @@ export default function App() {
             <div style={{maxWidth:660,margin:"0 auto",display:"flex",gap:6}}>
               <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==="Enter"&&handleSend()}
                 placeholder={`Ask about any of ${D_CRM.length} accounts or the portfolio...`}
-                style={{flex:1,padding:"8px 12px",border:`1px solid ${C.border}`,borderRadius:6,fontSize:16,color:C.text,outline:"none",fontFamily:"inherit",background:C.bg}}/>
-              <button onClick={handleSend} disabled={loading||!input.trim()} style={{padding:"8px 16px",background:input.trim()?C.blue:C.border,color:C.white,border:"none",borderRadius:6,fontWeight:600,fontSize:16,cursor:input.trim()?"pointer":"default",fontFamily:"inherit"}}>Ask</button>
+                style={{flex:1,padding:"8px 12px",border:`1px solid ${C.border}`,borderRadius:6,fontSize:12,color:C.text,outline:"none",fontFamily:"inherit",background:C.bg}}/>
+              <button onClick={handleSend} disabled={loading||!input.trim()} style={{padding:"8px 16px",background:input.trim()?C.blue:C.border,color:C.white,border:"none",borderRadius:6,fontWeight:600,fontSize:12,cursor:input.trim()?"pointer":"default",fontFamily:"inherit"}}>Ask</button>
             </div>
           </div>
         </div>}
