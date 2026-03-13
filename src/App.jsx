@@ -516,7 +516,14 @@ export default function App() {
   const chatScrollRef=useRef(null);
 
   useEffect(()=>{
-    if(chatScrollRef.current) chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
+    setTimeout(()=>{
+      if(chatEnd.current) {
+        chatEnd.current.scrollIntoView({behavior:"smooth",block:"end"});
+      }
+      if(chatScrollRef.current) {
+        chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
+      }
+    }, 100);
   },[msgs,loading]);
 
   const filtered = useMemo(()=>{
@@ -634,7 +641,7 @@ export default function App() {
       </div>
 
       {/* Main */}
-      <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden"}}>
+      <div style={{flex:1,display:"flex",flexDirection:"column",overflow:"hidden",minHeight:0}}>
         {view==="portfolio"&&<Portfolio/>}
 
         {view==="account"&&selAcct&&<>
@@ -659,8 +666,8 @@ export default function App() {
           </div>
         </>}
 
-        {view==="chat"&&<div style={{flex:1,display:"flex",flexDirection:"column"}}>
-          <div ref={chatScrollRef} style={{flex:1,overflow:"auto",padding:16}}>
+        {view==="chat"&&<div style={{flex:1,display:"flex",flexDirection:"column",height:"100%",minHeight:0}}>
+          <div ref={chatScrollRef} style={{flex:"1 1 0",overflowY:"auto",minHeight:0,padding:16}}>
             {msgs.length===0?<div style={{maxWidth:540,margin:"40px auto",textAlign:"center"}}>
               <div style={{fontSize:36,marginBottom:12}}>🔍</div>
               <h1 style={{fontSize:20,fontWeight:700,color:C.navy,margin:"0 0 6px"}}>Ask about any account or the portfolio</h1>
