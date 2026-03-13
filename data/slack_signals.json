@@ -1,0 +1,119 @@
+[
+  {
+    "message_id": "SLK-40281",
+    "account_id": "COAST-4821",
+    "account_name": "Meridian Freight Solutions",
+    "channel": "#account-alerts",
+    "date": "2025-03-10",
+    "time": "2:14 PM",
+    "from": "FraudBot",
+    "role": "Automated System",
+    "message": "⚠️ FLAG: Meridian Freight - Driver #38 (Carlos Mendez) - 3 fuel transactions within 45 min at locations 80mi apart. Transaction amounts: $412, $387, $218. Auto-held card pending manual review. Risk score for this driver session: 78/100.",
+    "thread_replies": [
+      {"from": "Rachel Kim", "time": "2:22 PM", "message": "Looking into it. Carlos runs the Atlanta-Birmingham route - could be GPS lag on the merchant side. Checking with Pilot Flying J."},
+      {"from": "Rachel Kim", "time": "3:45 PM", "message": "Confirmed with merchant - GPS coordinates were incorrect on the POS system at the Anniston, AL location. Legitimate transactions. Releasing hold."}
+    ],
+    "tags": ["fraud_alert", "resolved", "gps_error"]
+  },
+  {
+    "message_id": "SLK-40274",
+    "account_id": "COAST-4821",
+    "account_name": "Meridian Freight Solutions",
+    "channel": "#growth-accounts",
+    "date": "2025-03-05",
+    "time": "9:30 AM",
+    "from": "Rachel Kim",
+    "role": "Account Manager",
+    "message": "Meridian Freight asking for line increase from $185K to $250K again. Mike Davis is a great customer but getting impatient with our turnaround time. He mentioned WEX is courting them. Can we fast-track the review?",
+    "thread_replies": [
+      {"from": "Delia Nunez", "time": "9:47 AM", "message": "Let's review their file first. Pull last 90 days of spend patterns and updated financials before we approve anything. Also want to check their FMCSA safety rating given the fleet expansion."},
+      {"from": "Steven Rosen", "time": "10:02 AM", "message": "Agreed with Delia. But Rachel - let Mike know we're on it. Give him a timeline. We don't want to lose a growth account over process speed."},
+      {"from": "Rachel Kim", "time": "10:15 AM", "message": "On it. Will call Mike today with a 3-day turnaround commitment."}
+    ],
+    "tags": ["line_increase", "retention_risk", "competitor_threat"]
+  },
+  {
+    "message_id": "SLK-40312",
+    "account_id": "COAST-5192",
+    "account_name": "QuickHaul Logistics Inc",
+    "channel": "#account-alerts",
+    "date": "2025-03-12",
+    "time": "6:02 AM",
+    "from": "FraudBot",
+    "role": "Automated System",
+    "message": "🚨 ALERT: QuickHaul Logistics - Utilization spike to 70.7% (expected: ~40%). Spend velocity 74% above model prediction for fleet size. 12 transactions at unidentified merchant (ID#449281) totaling $8,900 in 5 days. Flagging for IMMEDIATE manual review.",
+    "thread_replies": [
+      {"from": "Delia Nunez", "time": "8:18 AM", "message": "This one concerns me. The unknown merchant txns plus the card-to-fleet ratio being off (18 cards for 12 trucks) is a classic pattern. Let's pull everything - KYB docs, bank statements, FMCSA cross-ref. James, what's your read from the calls?"},
+      {"from": "James Ortiz", "time": "8:34 AM", "message": "Not great. Raj was evasive yesterday when I asked about updated financials. Said his accountant was on vacation. He's been pushing for line increase since week 3. I gave him until Friday to send bank statements."},
+      {"from": "Delia Nunez", "time": "8:41 AM", "message": "If docs don't come by Friday EOD, let's reduce the line to $25K and put a temporary hold on new card issuance. I'd rather be safe here."}
+    ],
+    "tags": ["fraud_alert", "high_risk", "utilization_spike", "unknown_merchant", "escalated"]
+  },
+  {
+    "message_id": "SLK-40298",
+    "account_id": "COAST-5192",
+    "account_name": "QuickHaul Logistics Inc",
+    "channel": "#risk-review",
+    "date": "2025-03-11",
+    "time": "4:45 PM",
+    "from": "Delia Nunez",
+    "role": "Director, Risk & Analytics",
+    "message": "QuickHaul needs full review. Summary of flags: (1) 70.7% utilization in month 2, (2) $8.9K at unknown merchant, (3) 18 cards for 12 trucks, (4) off-hours transactions, (5) late payment in month 1, (6) owner evasive on docs. Anyone seen the FMCSA data? Their DOT# is 4102847.",
+    "thread_replies": [
+      {"from": "Analytics Bot", "time": "4:46 PM", "message": "FMCSA lookup for DOT# 4102847: QuickHaul Logistics Inc. Status: Active. Power units: 8 (not 12 as stated). Drivers: 10. Safety rating: Not rated. Last inspection: None on record. Operating since: Sep 2023."},
+      {"from": "Delia Nunez", "time": "4:52 PM", "message": "So they told us 12 trucks but FMCSA shows 8. That's a material misrepresentation on the application. This is escalating to high priority. @James Ortiz do NOT approve any new cards."},
+      {"from": "James Ortiz", "time": "5:01 PM", "message": "Copy. Blocking new card requests now. Already had 6 on hold."}
+    ],
+    "tags": ["fraud_investigation", "fleet_size_mismatch", "fmcsa_discrepancy", "material_misrepresentation"]
+  },
+  {
+    "message_id": "SLK-40320",
+    "account_id": "COAST-2104",
+    "account_name": "Greenfield Transport Co",
+    "channel": "#enterprise-accounts",
+    "date": "2025-03-12",
+    "time": "10:15 AM",
+    "from": "Rachel Kim",
+    "role": "Account Manager",
+    "message": "🎉 Greenfield renewing annual contract! QBR went great with Linda Park. Big news: they're acquiring Midwest Carriers (~30 trucks). Could be +$60K MRR for us. Linda wants a dedicated onboarding plan for the acquisition. Also requesting API integration and volume discount conversation.",
+    "thread_replies": [
+      {"from": "Steven Rosen", "time": "10:28 AM", "message": "Excellent news. Greenfield is a top-10 account. Let's fast-track the Midwest Carriers onboarding. Delia - can your team do a quick risk review on Midwest Carriers before we bring them on?"},
+      {"from": "Delia Nunez", "time": "10:35 AM", "message": "Already on it. Pulling Midwest Carriers' FMCSA data and will run a standard KYB check. Should have prelim results by Thursday."},
+      {"from": "Rachel Kim", "time": "10:40 AM", "message": "Perfect. Also flagging - Linda mentioned their board wants 15% cost reduction across all vendors. We should proactively build a Coast ROI report before renewal negotiation goes further."}
+    ],
+    "tags": ["renewal", "acquisition", "enterprise_growth", "api_request", "competitive_positioning"]
+  },
+  {
+    "message_id": "SLK-40335",
+    "account_id": "COAST-6743",
+    "account_name": "Patriot Plumbing & HVAC",
+    "channel": "#product-feedback",
+    "date": "2025-03-06",
+    "time": "11:20 AM",
+    "from": "James Ortiz",
+    "role": "Account Manager",
+    "message": "Feature request from Patriot Plumbing (COAST-6743): They want per-job spending limits that sync with BuildOps job IDs. Currently they're manually reconciling job costs. Dave says this would save them another 5+ hrs/month on top of the 10 hrs they already save with the integration. This could be a big differentiator for field service accounts.",
+    "thread_replies": [
+      {"from": "Product Team", "time": "1:15 PM", "message": "Interesting. Adding to the BuildOps integration roadmap. Can James get us a more detailed spec of what Dave envisions? Specific fields, limits, etc.?"},
+      {"from": "James Ortiz", "time": "1:30 PM", "message": "Will schedule a call with Dave and the product team next week."}
+    ],
+    "tags": ["feature_request", "buildops", "field_service", "job_costing"]
+  },
+  {
+    "message_id": "SLK-40341",
+    "account_id": "COAST-7291",
+    "account_name": "Apex Solar Installations",
+    "channel": "#activation-tracking",
+    "date": "2025-03-10",
+    "time": "5:00 PM",
+    "from": "Activation Bot",
+    "role": "Automated System",
+    "message": "📊 Weekly Activation Report - Low Activation Accounts:\n• Apex Solar (COAST-7291): 3/10 cards active (30%). Onboarded 35 days ago. Below 50% activation threshold.\n• [2 other accounts omitted]",
+    "thread_replies": [
+      {"from": "James Ortiz", "time": "5:15 PM", "message": "Called Carlos at Apex today. His crew prefers personal cards + expense reports (old habits). Trying to schedule a team training session but he keeps pushing it off."},
+      {"from": "Steven Rosen", "time": "5:30 PM", "message": "This is exactly the kind of account we need a better activation playbook for. Small fleets where the owner signs up but the crew doesn't adopt. Ideas welcome."},
+      {"from": "Delia Nunez", "time": "5:42 PM", "message": "What if we sent a short video walkthrough directly to each driver? Or an SMS-based onboarding flow? The owner shouldn't have to be the training bottleneck."}
+    ],
+    "tags": ["low_activation", "adoption_challenge", "activation_playbook", "process_improvement"]
+  }
+]

@@ -1,0 +1,366 @@
+[
+  {
+    "account_id": "COAST-4821",
+    "account_name": "Meridian Freight Solutions",
+    "risk_score": 23,
+    "risk_level": "Low",
+    "last_reviewed": "2025-03-01",
+    "next_review": "2025-06-01",
+    "kyb_verification": {
+      "status": "Verified",
+      "ein_verified": true,
+      "secretary_of_state_match": true,
+      "beneficial_owners_verified": true,
+      "verified_date": "2024-08-10"
+    },
+    "identity_verification": {
+      "owner_id_verified": true,
+      "id_type": "Driver's License - Georgia",
+      "id_match_score": 98,
+      "pep_screening": "Clear",
+      "ofac_screening": "Clear",
+      "adverse_media": "None"
+    },
+    "business_verification": {
+      "fmcsa_status": "Active",
+      "fmcsa_power_units": 45,
+      "stated_fleet_size": 47,
+      "fleet_size_match": true,
+      "dot_safety_rating": "Satisfactory",
+      "years_operating": 11,
+      "registered_state": "Georgia",
+      "active_authority": true
+    },
+    "financial_signals": {
+      "bank_statements_verified": true,
+      "bank_statement_date": "2025-01-15",
+      "avg_monthly_bank_balance": 340000,
+      "revenue_consistent_with_fleet": true,
+      "document_tampering_detected": false,
+      "dun_bradstreet_score": 78,
+      "business_credit_score": "Good"
+    },
+    "web_presence": {
+      "website_active": true,
+      "website_domain_age_years": 9,
+      "google_reviews_count": 142,
+      "google_rating": 4.3,
+      "bbb_accredited": true,
+      "bbb_rating": "A",
+      "social_media_active": true,
+      "linkedin_employees_listed": 38
+    },
+    "transaction_behavior": {
+      "payment_history_score": 95,
+      "avg_utilization_pct": 38.5,
+      "spend_velocity_normal": true,
+      "merchant_category_consistency": "High",
+      "geographic_consistency": "High - Southeast US corridor",
+      "off_hours_transaction_pct": 8
+    },
+    "source_signals": {
+      "acquisition_channel": "Trade Show - MATS 2024",
+      "in_person_verified": true,
+      "call_sentiment_avg": "Positive",
+      "responsiveness": "High - responds within 24hrs"
+    },
+    "active_flags": [
+      {"flag": "Line increase request pending ($185K → $250K)", "severity": "Info", "date": "2025-03-07"},
+      {"flag": "Competitor threat - WEX courting", "severity": "Info", "date": "2025-03-07"}
+    ],
+    "risk_factors_summary": "Low risk account with strong fundamentals. 11-year operating history, verified FMCSA records, consistent financials. Only watch item is the competitor outreach from WEX which could indicate shopping behavior if not addressed promptly."
+  },
+  {
+    "account_id": "COAST-5192",
+    "account_name": "QuickHaul Logistics Inc",
+    "risk_score": 82,
+    "risk_level": "High",
+    "last_reviewed": "2025-03-12",
+    "next_review": "2025-03-14",
+    "kyb_verification": {
+      "status": "Verified - Under Re-review",
+      "ein_verified": true,
+      "secretary_of_state_match": true,
+      "beneficial_owners_verified": true,
+      "verified_date": "2025-01-18"
+    },
+    "identity_verification": {
+      "owner_id_verified": true,
+      "id_type": "Driver's License - New Jersey",
+      "id_match_score": 92,
+      "pep_screening": "Clear",
+      "ofac_screening": "Clear",
+      "adverse_media": "None found"
+    },
+    "business_verification": {
+      "fmcsa_status": "Active",
+      "fmcsa_power_units": 8,
+      "stated_fleet_size": 12,
+      "fleet_size_match": false,
+      "fleet_size_discrepancy": "Stated 12, FMCSA shows 8 - material misrepresentation",
+      "dot_safety_rating": "Not Rated",
+      "years_operating": 1.5,
+      "registered_state": "New Jersey",
+      "active_authority": true
+    },
+    "financial_signals": {
+      "bank_statements_verified": true,
+      "bank_statement_date": "2025-01-15",
+      "avg_monthly_bank_balance": 42000,
+      "revenue_consistent_with_fleet": "Inconclusive - limited history",
+      "document_tampering_detected": "Under review - updated statements requested but not received",
+      "dun_bradstreet_score": null,
+      "business_credit_score": "Thin file"
+    },
+    "web_presence": {
+      "website_active": true,
+      "website_domain_age_years": 0.7,
+      "google_reviews_count": 3,
+      "google_rating": 5.0,
+      "bbb_accredited": false,
+      "bbb_rating": null,
+      "social_media_active": false,
+      "linkedin_employees_listed": 2
+    },
+    "transaction_behavior": {
+      "payment_history_score": 65,
+      "avg_utilization_pct": 70.7,
+      "spend_velocity_normal": false,
+      "spend_velocity_deviation": "+74% above model prediction",
+      "merchant_category_consistency": "Low - electronics and unknown merchants",
+      "geographic_consistency": "Medium - some out-of-region transactions",
+      "off_hours_transaction_pct": 28
+    },
+    "source_signals": {
+      "acquisition_channel": "Inbound - Google Ads",
+      "in_person_verified": false,
+      "call_sentiment_avg": "Evasive / Pushy",
+      "responsiveness": "Selective - responsive when requesting increases, evasive when docs requested"
+    },
+    "active_flags": [
+      {"flag": "Fleet size mismatch: stated 12, FMCSA shows 8", "severity": "Critical", "date": "2025-03-11"},
+      {"flag": "$8,900 at unidentified merchant in 5 days", "severity": "Critical", "date": "2025-03-12"},
+      {"flag": "18 active cards for 12-truck fleet (stated) / 8-truck fleet (FMCSA)", "severity": "High", "date": "2025-03-08"},
+      {"flag": "Spend velocity 74% above model", "severity": "High", "date": "2025-03-12"},
+      {"flag": "Updated bank statements overdue", "severity": "High", "date": "2025-03-11"},
+      {"flag": "Late payment in month 1 (5 days)", "severity": "Medium", "date": "2025-02-19"},
+      {"flag": "11 off-hours transactions in residential areas", "severity": "Medium", "date": "2025-03-10"},
+      {"flag": "Owner evasive on calls regarding financials", "severity": "Medium", "date": "2025-03-11"},
+      {"flag": "Early aggressive line increase request (week 3)", "severity": "Medium", "date": "2025-02-15"},
+      {"flag": "Website domain only 8 months old", "severity": "Low", "date": "2025-01-18"}
+    ],
+    "risk_factors_summary": "HIGH RISK - Multiple converging signals. Material misrepresentation on fleet size (stated 12 vs FMCSA 8). Unexplained high utilization and velocity for a new account. Significant unknown merchant transactions. Owner behavior pattern concerning - aggressive on credit requests, evasive on documentation. Recommend: line reduction to $25K, block new card issuance, demand updated financials by 3/14 or initiate account review process."
+  },
+  {
+    "account_id": "COAST-2104",
+    "account_name": "Greenfield Transport Co",
+    "risk_score": 8,
+    "risk_level": "Very Low",
+    "last_reviewed": "2025-03-12",
+    "next_review": "2025-06-12",
+    "kyb_verification": {
+      "status": "Verified",
+      "ein_verified": true,
+      "secretary_of_state_match": true,
+      "beneficial_owners_verified": true,
+      "verified_date": "2023-10-28"
+    },
+    "identity_verification": {
+      "owner_id_verified": true,
+      "id_type": "Passport - US",
+      "id_match_score": 99,
+      "pep_screening": "Clear",
+      "ofac_screening": "Clear",
+      "adverse_media": "None"
+    },
+    "business_verification": {
+      "fmcsa_status": "Active",
+      "fmcsa_power_units": 118,
+      "stated_fleet_size": 120,
+      "fleet_size_match": true,
+      "dot_safety_rating": "Satisfactory",
+      "years_operating": 22,
+      "registered_state": "Texas",
+      "active_authority": true
+    },
+    "financial_signals": {
+      "bank_statements_verified": true,
+      "bank_statement_date": "2025-02-15",
+      "avg_monthly_bank_balance": 2800000,
+      "revenue_consistent_with_fleet": true,
+      "document_tampering_detected": false,
+      "dun_bradstreet_score": 91,
+      "business_credit_score": "Excellent"
+    },
+    "web_presence": {
+      "website_active": true,
+      "website_domain_age_years": 18,
+      "google_reviews_count": 524,
+      "google_rating": 4.1,
+      "bbb_accredited": true,
+      "bbb_rating": "A+",
+      "social_media_active": true,
+      "linkedin_employees_listed": 187
+    },
+    "transaction_behavior": {
+      "payment_history_score": 100,
+      "avg_utilization_pct": 40.9,
+      "spend_velocity_normal": true,
+      "merchant_category_consistency": "Very High",
+      "geographic_consistency": "Nationwide - consistent with refrigerated freight routes",
+      "off_hours_transaction_pct": 15
+    },
+    "source_signals": {
+      "acquisition_channel": "Enterprise Sales - Outbound via Visa Fleet Program",
+      "in_person_verified": true,
+      "call_sentiment_avg": "Very Positive - Strategic partner",
+      "responsiveness": "Excellent - CFO Linda Park highly engaged"
+    },
+    "active_flags": [
+      {"flag": "Midwest Carriers acquisition - needs risk review for onboarding", "severity": "Info", "date": "2025-03-12"}
+    ],
+    "risk_factors_summary": "Exemplary account. 22-year operating history, impeccable payment record (16 consecutive on-time), verified FMCSA records with close fleet size match. Strong web presence, excellent credit scores. Top-10 revenue account. Only action item is risk review of Midwest Carriers acquisition for onboarding."
+  },
+  {
+    "account_id": "COAST-6743",
+    "account_name": "Patriot Plumbing & HVAC",
+    "risk_score": 15,
+    "risk_level": "Low",
+    "last_reviewed": "2025-02-15",
+    "next_review": "2025-05-15",
+    "kyb_verification": {
+      "status": "Verified",
+      "ein_verified": true,
+      "secretary_of_state_match": true,
+      "beneficial_owners_verified": true,
+      "verified_date": "2024-03-05"
+    },
+    "identity_verification": {
+      "owner_id_verified": true,
+      "id_type": "Driver's License - Georgia",
+      "id_match_score": 97,
+      "pep_screening": "Clear",
+      "ofac_screening": "Clear",
+      "adverse_media": "None"
+    },
+    "business_verification": {
+      "fmcsa_status": "N/A - Not a carrier",
+      "fmcsa_power_units": null,
+      "stated_fleet_size": 28,
+      "fleet_size_match": "N/A - No FMCSA requirement for service vehicles",
+      "dot_safety_rating": "N/A",
+      "years_operating": 15,
+      "registered_state": "Georgia",
+      "active_authority": "N/A"
+    },
+    "financial_signals": {
+      "bank_statements_verified": true,
+      "bank_statement_date": "2024-12-15",
+      "avg_monthly_bank_balance": 185000,
+      "revenue_consistent_with_fleet": true,
+      "document_tampering_detected": false,
+      "dun_bradstreet_score": 72,
+      "business_credit_score": "Good"
+    },
+    "web_presence": {
+      "website_active": true,
+      "website_domain_age_years": 12,
+      "google_reviews_count": 287,
+      "google_rating": 4.6,
+      "bbb_accredited": true,
+      "bbb_rating": "A",
+      "social_media_active": true,
+      "linkedin_employees_listed": 22
+    },
+    "transaction_behavior": {
+      "payment_history_score": 100,
+      "avg_utilization_pct": 44.3,
+      "spend_velocity_normal": true,
+      "merchant_category_consistency": "High - fuel + home improvement + plumbing supply",
+      "geographic_consistency": "High - Metro Atlanta area",
+      "off_hours_transaction_pct": 5
+    },
+    "source_signals": {
+      "acquisition_channel": "Inbound - Referral (BuildOps Partnership)",
+      "in_person_verified": false,
+      "call_sentiment_avg": "Very Positive",
+      "responsiveness": "High"
+    },
+    "active_flags": [
+      {"flag": "Non-fuel spend increasing 22% - monitor (likely HVAC expansion)", "severity": "Info", "date": "2025-03-05"}
+    ],
+    "risk_factors_summary": "Strong field service account. 15-year operating history, excellent payment record, strong local web presence. Non-fuel spend increase is expected given HVAC expansion. No concerns."
+  },
+  {
+    "account_id": "COAST-7291",
+    "account_name": "Apex Solar Installations",
+    "risk_score": 28,
+    "risk_level": "Low-Medium",
+    "last_reviewed": "2025-03-10",
+    "next_review": "2025-04-10",
+    "kyb_verification": {
+      "status": "Verified",
+      "ein_verified": true,
+      "secretary_of_state_match": true,
+      "beneficial_owners_verified": true,
+      "verified_date": "2025-01-28"
+    },
+    "identity_verification": {
+      "owner_id_verified": true,
+      "id_type": "Driver's License - Texas",
+      "id_match_score": 95,
+      "pep_screening": "Clear",
+      "ofac_screening": "Clear",
+      "adverse_media": "None"
+    },
+    "business_verification": {
+      "fmcsa_status": "N/A - Not a carrier",
+      "fmcsa_power_units": null,
+      "stated_fleet_size": 8,
+      "fleet_size_match": "N/A",
+      "dot_safety_rating": "N/A",
+      "years_operating": 4,
+      "registered_state": "Texas",
+      "active_authority": "N/A"
+    },
+    "financial_signals": {
+      "bank_statements_verified": true,
+      "bank_statement_date": "2025-01-20",
+      "avg_monthly_bank_balance": 78000,
+      "revenue_consistent_with_fleet": true,
+      "document_tampering_detected": false,
+      "dun_bradstreet_score": 58,
+      "business_credit_score": "Fair"
+    },
+    "web_presence": {
+      "website_active": true,
+      "website_domain_age_years": 3.5,
+      "google_reviews_count": 47,
+      "google_rating": 4.8,
+      "bbb_accredited": false,
+      "bbb_rating": null,
+      "social_media_active": true,
+      "linkedin_employees_listed": 8
+    },
+    "transaction_behavior": {
+      "payment_history_score": 90,
+      "avg_utilization_pct": 14.0,
+      "spend_velocity_normal": true,
+      "merchant_category_consistency": "High",
+      "geographic_consistency": "High - El Paso metro area",
+      "off_hours_transaction_pct": 0
+    },
+    "source_signals": {
+      "acquisition_channel": "Inbound - Website",
+      "in_person_verified": false,
+      "call_sentiment_avg": "Neutral - Distracted",
+      "responsiveness": "Low - slow to respond, defers training"
+    },
+    "active_flags": [
+      {"flag": "Low activation: 3/10 cards used (30%)", "severity": "Medium", "date": "2025-03-10"},
+      {"flag": "Low utilization: 14% vs 40% target", "severity": "Medium", "date": "2025-03-10"},
+      {"flag": "Owner engagement declining - deferred training twice", "severity": "Low", "date": "2025-03-10"}
+    ],
+    "risk_factors_summary": "No fraud or credit risk concerns. Primary risk is churn due to low activation and adoption. Owner signed up but crew hasn't adopted Coast cards. If activation doesn't improve by day 60, high probability of churn. This is an activation/onboarding problem, not a risk problem."
+  }
+]

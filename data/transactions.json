@@ -1,0 +1,161 @@
+[
+  {
+    "account_id": "COAST-4821",
+    "account_name": "Meridian Freight Solutions",
+    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
+    "summary": {
+      "total_spend": 71200,
+      "avg_daily_spend": 2373,
+      "transaction_count": 312,
+      "unique_drivers": 44,
+      "unique_merchants": 67,
+      "fuel_spend": 58400,
+      "non_fuel_spend": 12800,
+      "avg_transaction_amount": 228
+    },
+    "top_merchants": [
+      {"merchant": "Pilot Flying J", "spend": 28400, "txn_count": 124, "category": "Fuel"},
+      {"merchant": "Love's Travel Stops", "spend": 19800, "txn_count": 87, "category": "Fuel"},
+      {"merchant": "TA Petro", "spend": 12100, "txn_count": 52, "category": "Fuel"},
+      {"merchant": "AutoZone", "spend": 3200, "txn_count": 8, "category": "Vehicle Maintenance"},
+      {"merchant": "Walmart", "spend": 2100, "txn_count": 14, "category": "Supplies"}
+    ],
+    "anomalies": [
+      {"type": "High Value", "detail": "3 transactions over $800 (avg is $228)", "severity": "Low", "driver": "Carlos Mendez (#38)"},
+      {"type": "Pattern Change", "detail": "Weekend spend up 34% vs prior month", "severity": "Medium", "driver": "Multiple"},
+      {"type": "Location", "detail": "2 transactions at non-network stations (rural Alabama)", "severity": "Low", "driver": "James Wilson (#12)"}
+    ],
+    "spend_trend": [
+      {"week": "Feb 11-17", "spend": 16200},
+      {"week": "Feb 18-24", "spend": 17800},
+      {"week": "Feb 25-Mar 3", "spend": 18100},
+      {"week": "Mar 4-12", "spend": 19100}
+    ]
+  },
+  {
+    "account_id": "COAST-5192",
+    "account_name": "QuickHaul Logistics Inc",
+    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
+    "summary": {
+      "total_spend": 31800,
+      "avg_daily_spend": 1060,
+      "transaction_count": 89,
+      "unique_drivers": 14,
+      "unique_merchants": 22,
+      "fuel_spend": 18700,
+      "non_fuel_spend": 13100,
+      "avg_transaction_amount": 357
+    },
+    "top_merchants": [
+      {"merchant": "Sunoco", "spend": 14200, "txn_count": 38, "category": "Fuel"},
+      {"merchant": "UNKNOWN MERCHANT - ID#449281", "spend": 8900, "txn_count": 12, "category": "Unknown"},
+      {"merchant": "Shell", "spend": 5100, "txn_count": 18, "category": "Fuel"},
+      {"merchant": "Home Depot", "spend": 2400, "txn_count": 5, "category": "Supplies"},
+      {"merchant": "Best Buy", "spend": 1200, "txn_count": 2, "category": "Electronics"}
+    ],
+    "anomalies": [
+      {"type": "Velocity", "detail": "Spend velocity 74% above projected for fleet size of 12", "severity": "High", "driver": "Multiple"},
+      {"type": "Unknown Merchant", "detail": "$8,900 at single unidentified merchant in 5 days (12 transactions)", "severity": "Critical", "driver": "Raj Patel (#01), Amit Singh (#03)"},
+      {"type": "Category Mismatch", "detail": "Electronics purchases ($1,200 at Best Buy) inconsistent with delivery fleet", "severity": "Medium", "driver": "Raj Patel (#01)"},
+      {"type": "Card Count", "detail": "18 active cards for 12-truck fleet (150% ratio)", "severity": "High", "driver": "N/A"},
+      {"type": "Off-Hours", "detail": "11 transactions between 11PM-4AM in residential areas", "severity": "Medium", "driver": "Multiple"}
+    ],
+    "spend_trend": [
+      {"week": "Feb 11-17", "spend": 5200},
+      {"week": "Feb 18-24", "spend": 6800},
+      {"week": "Feb 25-Mar 3", "spend": 8900},
+      {"week": "Mar 4-12", "spend": 10900}
+    ]
+  },
+  {
+    "account_id": "COAST-2104",
+    "account_name": "Greenfield Transport Co",
+    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
+    "summary": {
+      "total_spend": 212500,
+      "avg_daily_spend": 7083,
+      "transaction_count": 1847,
+      "unique_drivers": 138,
+      "unique_merchants": 214,
+      "fuel_spend": 189200,
+      "non_fuel_spend": 23300,
+      "avg_transaction_amount": 115
+    },
+    "top_merchants": [
+      {"merchant": "Pilot Flying J", "spend": 78200, "txn_count": 682, "category": "Fuel"},
+      {"merchant": "Love's Travel Stops", "spend": 54100, "txn_count": 471, "category": "Fuel"},
+      {"merchant": "Casey's General Store", "spend": 31800, "txn_count": 277, "category": "Fuel"},
+      {"merchant": "TA Petro", "spend": 18400, "txn_count": 160, "category": "Fuel"},
+      {"merchant": "Ryder Truck Rental", "spend": 6700, "txn_count": 4, "category": "Vehicle Maintenance"}
+    ],
+    "anomalies": [],
+    "spend_trend": [
+      {"week": "Feb 11-17", "spend": 51200},
+      {"week": "Feb 18-24", "spend": 53400},
+      {"week": "Feb 25-Mar 3", "spend": 54100},
+      {"week": "Mar 4-12", "spend": 53800}
+    ]
+  },
+  {
+    "account_id": "COAST-6743",
+    "account_name": "Patriot Plumbing & HVAC",
+    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
+    "summary": {
+      "total_spend": 42100,
+      "avg_daily_spend": 1403,
+      "transaction_count": 187,
+      "unique_drivers": 28,
+      "unique_merchants": 48,
+      "fuel_spend": 22800,
+      "non_fuel_spend": 19300,
+      "avg_transaction_amount": 225
+    },
+    "top_merchants": [
+      {"merchant": "Shell", "spend": 9200, "txn_count": 42, "category": "Fuel"},
+      {"merchant": "BP", "spend": 7100, "txn_count": 33, "category": "Fuel"},
+      {"merchant": "Home Depot", "spend": 8400, "txn_count": 28, "category": "Job Supplies"},
+      {"merchant": "Ferguson Enterprises", "spend": 6200, "txn_count": 12, "category": "Plumbing Supplies"},
+      {"merchant": "Carrier HVAC Distributor", "spend": 4800, "txn_count": 6, "category": "HVAC Equipment"}
+    ],
+    "anomalies": [
+      {"type": "Pattern Change", "detail": "Non-fuel spend increased 22% - likely due to HVAC expansion", "severity": "Low", "driver": "Multiple new hires"}
+    ],
+    "spend_trend": [
+      {"week": "Feb 11-17", "spend": 9200},
+      {"week": "Feb 18-24", "spend": 10100},
+      {"week": "Feb 25-Mar 3", "spend": 10800},
+      {"week": "Mar 4-12", "spend": 12000}
+    ]
+  },
+  {
+    "account_id": "COAST-7291",
+    "account_name": "Apex Solar Installations",
+    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
+    "summary": {
+      "total_spend": 4200,
+      "avg_daily_spend": 140,
+      "transaction_count": 18,
+      "unique_drivers": 3,
+      "unique_merchants": 8,
+      "fuel_spend": 2900,
+      "non_fuel_spend": 1300,
+      "avg_transaction_amount": 233
+    },
+    "top_merchants": [
+      {"merchant": "Circle K", "spend": 1400, "txn_count": 7, "category": "Fuel"},
+      {"merchant": "Valero", "spend": 1100, "txn_count": 5, "category": "Fuel"},
+      {"merchant": "Home Depot", "spend": 800, "txn_count": 3, "category": "Supplies"},
+      {"merchant": "AutoZone", "spend": 500, "txn_count": 2, "category": "Vehicle Maintenance"}
+    ],
+    "anomalies": [
+      {"type": "Low Activation", "detail": "Only 3 of 10 issued cards have been used (30% activation rate)", "severity": "Medium", "driver": "7 drivers inactive"},
+      {"type": "Low Utilization", "detail": "14% utilization vs 40% target for fleet size", "severity": "Medium", "driver": "N/A"}
+    ],
+    "spend_trend": [
+      {"week": "Feb 11-17", "spend": 800},
+      {"week": "Feb 18-24", "spend": 1100},
+      {"week": "Feb 25-Mar 3", "spend": 1200},
+      {"week": "Mar 4-12", "spend": 1100}
+    ]
+  }
+]
