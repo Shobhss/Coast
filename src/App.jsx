@@ -33,13 +33,236 @@ const SYS = `You are Coast Account Intelligence, an internal AI agent for Coast 
 Rules: Be direct, opinionated, actionable. Connect dots across sources. Highlight risks prominently. Recommend next actions. Use **bold** and ## headers.
 There are 55 accounts in the portfolio. If asked about portfolio health, analyze risk distribution, total exposure, delinquency, activation rates, and flag top concerns.`;
 
+// ── LOCAL ANALYSIS ENGINE (works without API) ──
+function localAnalyze(msg, data) {
+  const q = msg.toLowerCase();
+
+  // Single account briefing
+  if (data?.crm?.name) {
+    const a=data.crm, r=data.risk, t=data.txn, calls=data.calls||[], sl=data.slack||[], sup=data.support||[];
+    const riskColor = r?.score>=60?"🚨 HIGH RISK":r?.score>=40?"⚠️ ELEVATED":"✅ HEALTHY";
+    let out = `## ${a.name} — Account Intelligence Briefing\n\n`;
+    out += `### Overview\n`;
+    out += `**${riskColor}** · Risk Score: **${r?.score||'N/A'}/100** (${r?.lv||'Unknown'})\n`;
+    out += `- **Industry:** ${a.ind} · **Fleet:** ${a.fleet} vehicles · **Tier:** ${a.tier}\n`;
+    out += `- **Credit Line:** $${(a.credit||0).toLocaleString()} · **Balance:** $${(a.bal||0).toLocaleString()} · **Utilization:** ${a.util}%\n`;
+    out += `- **Monthly Spend:** $${(a.spend||0).toLocaleString()} · **On-time Payments:** ${a.otp} consecutive\n`;
+    out += `- **Owner:** ${a.owner} · **AM:** ${a.am} · **Onboarded:** ${a.onb}\n\n`;
+
+    if(t?.a?.length) {
+      out += `### Transaction Anomalies (${t.a.length})\n`;
+      t.a.forEach(an => { out += `- **${an.severity}:** ${an.detail}\n`; });
+      out += `\n`;
+    }
+
+    if(r?.fl?.length) {
+      out += `### Active Risk Flags (${r.fl.length})\n`;
+      r.fl.forEach(f => { out += `- ${f}\n`; });
+      out += `\n`;
+    }
+
+    if(calls.length) {
+      out += `### Recent Call Activity (${calls.length} calls)\n`;
+      calls.forEach(c => { out += `- **${c.dt}** (${c.rep}, ${c.sent}): ${c.sum}\n`; });
+      out += `\n`;
+    }
+
+    if(sl.length) {
+      out += `### Slack Signals (${sl.length})\n`;
+      sl.forEach(s => { out += `- **${s.ch}** ${s.dt} — ${s.fr}: ${s.msg}\n`; });
+      out += `\n`;
+    }
+
+    if(sup.length) {
+      out += `### Support Tickets (${sup.length})\n`;
+      sup.forEach(s => { out += `- **${s.tid}** ${s.subj} (${s.st}) — ${s.res||'Pending'}\n`; });
+      out += `\n`;
+    }
+
+    out += `### Risk Assessment\n`;
+    out += `${r?.sum||'No summary available.'}\n\n`;
+
+    // Recommendations
+    out += `### Recommended Actions\n`;
+    if(r?.score>=60) {
+      out += `- **URGENT:** Conduct full account review across all data sources\n`;
+      out += `- Review and potentially reduce credit line exposure\n`;
+      out += `- ${r?.bank!==true?'Demand updated bank statements immediately':'Monitor transaction patterns daily'}\n`;
+    } else if(a.status?.includes("Activation")) {
+      out += `- **Priority:** Improve card activation (currently low adoption)\n`;
+      out += `- Schedule team training with ${a.owner}\n`;
+      out += `- Consider SMS-based onboarding directly to drivers\n`;
+    } else if(a.util>55) {
+      out += `- Monitor utilization trend (${a.util}% is elevated)\n`;
+      out += `- Proactive check-in with ${a.owner} about credit needs\n`;
+    } else {
+      out += `- Standard monitoring — account performing well\n`;
+      if(a.tier==="Growth") out += `- Evaluate for enterprise tier upgrade\n`;
+    }
+    return out;
+  }
+
+  // Portfolio-level queries
+  if(q.match(/portfolio|all accounts|overview|health|total|exposure|how many/)) {
+    const totalCredit = D_CRM.reduce((s,a)=>s+a.credit,0);
+    const totalBal = D_CRM.reduce((s,a)=>s+a.bal,0);
+    const totalSpend = D_TXN.reduce((s,a)=>s+a.spend,0);
+    const riskDist = {}; D_RISK.forEach(r=>{riskDist[r.lv]=(riskDist[r.lv]||0)+1;});
+    const highRisk = D_RISK.filter(r=>r.score>=60);
+    const delinquent = D_CRM.filter(a=>a.dpd>0);
+    const avgUtil = (D_TXN.reduce((s,t)=>s+t.util,0)/D_TXN.length).toFixed(1);
+    const totalAnom = D_TXN.reduce((s,t)=>s+t.a.length,0);
+    const critAnom = D_TXN.reduce((s,t)=>s+t.a.filter(x=>x.severity==="Critical"||x.severity==="High").length,0);
+
+    let out = `## Portfolio Risk Overview\n\n`;
+    out += `### Key Metrics\n`;
+    out += `- **Total Accounts:** ${D_CRM.length}\n`;
+    out += `- **Total Credit Exposure:** $${totalCredit.toLocaleString()}\n`;
+    out += `- **Outstanding Balance:** $${totalBal.toLocaleString()}\n`;
+    out += `- **Monthly Spend:** $${totalSpend.toLocaleString()}\n`;
+    out += `- **Avg Utilization:** ${avgUtil}%\n`;
+    out += `- **Total Vehicles:** ${D_CRM.reduce((s,a)=>s+a.fleet,0).toLocaleString()}\n\n`;
+
+    out += `### Risk Distribution\n`;
+    ["Very Low","Low","Low-Medium","Medium","High"].forEach(lv => {
+      if(riskDist[lv]) out += `- **${lv}:** ${riskDist[lv]} accounts (${Math.round(riskDist[lv]/D_CRM.length*100)}%)\n`;
+    });
+    out += `\n`;
+
+    out += `### Anomalies\n`;
+    out += `- **${critAnom}** Critical/High severity anomalies across portfolio\n`;
+    out += `- **${totalAnom}** total anomalies detected\n\n`;
+
+    if(highRisk.length) {
+      out += `### ⚠️ High Risk Accounts (${highRisk.length})\n`;
+      highRisk.forEach(r => {
+        const a = D_CRM.find(c=>c.id===r.id);
+        out += `- **${a?.name}** — Score: ${r.score}, ${r.fl?.length||0} flags, Util: ${a?.util}%\n`;
+      });
+      out += `\n`;
+    }
+
+    if(delinquent.length) {
+      out += `### Delinquent Accounts (${delinquent.length})\n`;
+      delinquent.forEach(a => { out += `- **${a.name}** — ${a.dpd} days past due, Balance: $${a.bal.toLocaleString()}\n`; });
+      out += `\n`;
+    }
+
+    out += `### Recommended Actions\n`;
+    out += `- Immediate review of ${highRisk.length} high-risk accounts\n`;
+    if(delinquent.length) out += `- Collections follow-up on ${delinquent.length} delinquent accounts\n`;
+    out += `- Monitor portfolio utilization trend (${avgUtil}% avg)\n`;
+    return out;
+  }
+
+  // High risk query
+  if(q.match(/high risk|risky|fraud|suspicious/)) {
+    const highRisk = D_RISK.filter(r=>r.score>=50).sort((a,b)=>b.score-a.score);
+    let out = `## High Risk Accounts (${highRisk.length})\n\n`;
+    highRisk.forEach(r => {
+      const a = D_CRM.find(c=>c.id===r.id);
+      const t = getT(r.id);
+      out += `### ${a?.name} — Risk Score: ${r.score}/100\n`;
+      out += `- **Level:** ${r.lv} · **Industry:** ${a?.ind} · **Util:** ${t?.util||0}%\n`;
+      out += `- **Flags:** ${r.fl?.join("; ")||"None"}\n`;
+      out += `- **Summary:** ${r.sum}\n\n`;
+    });
+    return out;
+  }
+
+  // Delinquent
+  if(q.match(/delinquent|past due|overdue|late pay/)) {
+    const del = D_CRM.filter(a=>a.dpd>0).sort((a,b)=>b.dpd-a.dpd);
+    if(!del.length) return `## Delinquent Accounts\n\nNo accounts are currently past due. All ${D_CRM.length} accounts are current on payments.`;
+    let out = `## Delinquent Accounts (${del.length})\n\n`;
+    del.forEach(a => {
+      const r = getR(a.id);
+      out += `- **${a.name}** — **${a.dpd} days past due** · Balance: $${a.bal.toLocaleString()} · Risk: ${r?.lv} (${r?.score})\n`;
+    });
+    return out;
+  }
+
+  // Top spend
+  if(q.match(/top.*spend|highest spend|biggest spend/)) {
+    const sorted = [...D_TXN].sort((a,b)=>b.spend-a.spend).slice(0,10);
+    let out = `## Top 10 Accounts by Monthly Spend\n\n`;
+    sorted.forEach((t,i) => {
+      const a = D_CRM.find(c=>c.id===t.id);
+      out += `${i+1}. **${a?.name}** — $${t.spend.toLocaleString()}/mo · ${a?.fleet} vehicles · ${a?.tier}\n`;
+    });
+    return out;
+  }
+
+  // Industry
+  if(q.match(/industr/)) {
+    const byInd = {};
+    D_CRM.forEach(a => {
+      if(!byInd[a.ind]) byInd[a.ind]={count:0,spend:0,flags:0,risk:0};
+      byInd[a.ind].count++;
+      byInd[a.ind].spend += getT(a.id)?.spend||0;
+      byInd[a.ind].flags += getR(a.id)?.fl?.length||0;
+      byInd[a.ind].risk += getR(a.id)?.score||0;
+    });
+    let out = `## Industry Analysis\n\n`;
+    Object.entries(byInd).sort((a,b)=>b[1].spend-a[1].spend).forEach(([ind,d]) => {
+      out += `- **${ind}:** ${d.count} accounts · $${d.spend.toLocaleString()}/mo · ${d.flags} total flags · Avg risk: ${Math.round(d.risk/d.count)}\n`;
+    });
+    return out;
+  }
+
+  // Activation
+  if(q.match(/activation|adoption|unused|inactive/)) {
+    const low = D_CRM.filter(a=>a.status?.includes("Activation")||a.util<20);
+    let out = `## Activation Analysis\n\n`;
+    out += `**${low.length} accounts** with low activation or utilization below 20%:\n\n`;
+    low.forEach(a => {
+      out += `- **${a.name}** — Util: ${a.util}% · ${a.cards} cards issued · Status: ${a.status} · AM: ${a.am}\n`;
+    });
+    out += `\n### Recommendation\nThese accounts are at high churn risk. Consider direct driver outreach, SMS onboarding, or activation incentives.`;
+    return out;
+  }
+
+  // Acquisition channel
+  if(q.match(/channel|acquisition|source|compare.*risk/)) {
+    const bySrc = {};
+    D_CRM.forEach(a => {
+      const s = a.src?.split(" - ")[0]||"Other";
+      if(!bySrc[s]) bySrc[s]={count:0,totalRisk:0,totalSpend:0};
+      bySrc[s].count++;
+      bySrc[s].totalRisk += getR(a.id)?.score||0;
+      bySrc[s].totalSpend += getT(a.id)?.spend||0;
+    });
+    let out = `## Risk by Acquisition Channel\n\n`;
+    Object.entries(bySrc).sort((a,b)=>(b[1].totalRisk/b[1].count)-(a[1].totalRisk/a[1].count)).forEach(([src,d]) => {
+      out += `- **${src}:** ${d.count} accounts · Avg Risk: ${Math.round(d.totalRisk/d.count)} · Total Spend: $${d.totalSpend.toLocaleString()}/mo\n`;
+    });
+    return out;
+  }
+
+  // Fallback — try to find an account mention
+  const acct = findAcct(msg);
+  if(acct) {
+    const allData = {crm:acct, risk:getR(acct.id), txn:getT(acct.id), calls:getCalls(acct.id), slack:getSlack(acct.id), support:getSup(acct.id)};
+    return localAnalyze(`briefing for ${acct.name}`, allData);
+  }
+
+  return `## I can help with:\n\n- **Account briefings:** "Tell me about Meridian Freight" or "QuickHaul risk analysis"\n- **Portfolio overview:** "Portfolio risk overview" or "Total credit exposure"\n- **High risk:** "Which accounts are high risk?"\n- **Delinquent:** "Show me delinquent accounts"\n- **Top spend:** "Top 5 highest spend accounts"\n- **Industry:** "Which industries have highest fraud signals?"\n- **Activation:** "Activation rate analysis"\n- **Channels:** "Compare risk by acquisition channel"\n\nTry clicking an account in the sidebar, or ask one of the questions above!`;
+}
+
 async function callAI(msg, data, extra="") {
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method:"POST", headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1500, system: SYS+extra, messages:[{role:"user",content: data ? `Query: ${msg}\n\nDATA:\n${JSON.stringify(data)}` : msg}] })
-  });
-  const d = await res.json();
-  return d.content?.filter(b=>b.type==="text").map(b=>b.text).join("\n") || "Error.";
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1500, system: SYS+extra, messages:[{role:"user",content: data ? `Query: ${msg}\n\nDATA:\n${JSON.stringify(data)}` : msg}] })
+    });
+    if(!res.ok) throw new Error("API error");
+    const d = await res.json();
+    const text = d.content?.filter(b=>b.type==="text").map(b=>b.text).join("\n");
+    if(!text) throw new Error("Empty response");
+    return text;
+  } catch(e) {
+    return localAnalyze(msg, data);
+  }
 }
 
 // ═══════════════════════════════════════════
