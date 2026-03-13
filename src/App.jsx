@@ -249,10 +249,12 @@ function localAnalyze(msg, data) {
   return `## I can help with:\n\n- **Account briefings:** "Tell me about Meridian Freight" or "QuickHaul risk analysis"\n- **Portfolio overview:** "Portfolio risk overview" or "Total credit exposure"\n- **High risk:** "Which accounts are high risk?"\n- **Delinquent:** "Show me delinquent accounts"\n- **Top spend:** "Top 5 highest spend accounts"\n- **Industry:** "Which industries have highest fraud signals?"\n- **Activation:** "Activation rate analysis"\n- **Channels:** "Compare risk by acquisition channel"\n\nTry clicking an account in the sidebar, or ask one of the questions above!`;
 }
 
-async function callAI(msg, data, extra="") {
+async function callAI(msg, data, extra="", key="") {
   try {
+    const headers = {"Content-Type":"application/json"};
+    if(key) headers["x-api-key"] = key;
     const res = await fetch("https://api.anthropic.com/v1/messages", {
-      method:"POST", headers:{"Content-Type":"application/json"},
+      method:"POST", headers,
       body: JSON.stringify({ model:"claude-sonnet-4-20250514", max_tokens:1500, system: SYS+extra, messages:[{role:"user",content: data ? `Query: ${msg}\n\nDATA:\n${JSON.stringify(data)}` : msg}] })
     });
     if(!res.ok) throw new Error("API error");
@@ -495,9 +497,14 @@ export default function App() {
   const [filterRisk,setFilterRisk]=useState("All");
   const [filterTier,setFilterTier]=useState("All");
   const [sortBy,setSortBy]=useState("risk");
+  const [apiKey,setApiKey]=useState("");
+  const [showSettings,setShowSettings]=useState(false);
   const chatEnd=useRef(null);
+  const chatScrollRef=useRef(null);
 
-  useEffect(()=>{chatEnd.current?.scrollIntoView({behavior:"smooth"});},[msgs,loading]);
+  useEffect(()=>{
+    if(chatScrollRef.current) chatScrollRef.current.scrollTop = chatScrollRef.current.scrollHeight;
+  },[msgs,loading]);
 
   const filtered = useMemo(()=>{
     let list = D_CRM.filter(a=>{
@@ -517,7 +524,7 @@ export default function App() {
     setSelAcct(a); setView("account"); setSummary(""); setSumLoading(true);
     try {
       const data = {crm:a, risk:getR(a.id), txn:getT(a.id), calls:getCalls(a.id), slack:getSlack(a.id), support:getSup(a.id)};
-      const reply = await callAI(`Generate intelligence briefing for ${a.name}. Cover: health, risks, activity highlights, transaction patterns, and next actions.`, data, "\nFormat as structured internal briefing. Be concise.");
+      const reply = await callAI(`Generate intelligence briefing for ${a.name}. Cover: health, risks, activity highlights, transaction patterns, and next actions.`, data, "\nFormat as structured internal briefing. Be concise.", apiKey);
       setSummary(reply);
     } catch { setSummary("Error generating briefing."); }
     setSumLoading(false);
@@ -535,7 +542,7 @@ export default function App() {
       } else if(msg.toLowerCase().match(/portfolio|all accounts|overview|compare|distribution|health|summary|total|how many/)) {
         data = {portfolio:{accounts:D_CRM.length,total_credit:D_CRM.reduce((s,a)=>s+a.credit,0),total_balance:D_CRM.reduce((s,a)=>s+a.bal,0)},crm_summary:D_CRM.map(a=>({name:a.name,ind:a.ind,fleet:a.fleet,tier:a.tier,util:a.util,spend:a.spend,dpd:a.dpd,status:a.status})),risk_summary:D_RISK.map(r=>({name:r.id,score:r.score,level:r.lv,flags:r.fl?.length||0})),txn_summary:D_TXN.map(t=>({id:t.id,spend:t.spend,util:t.util,anomalies:t.a.length}))};
       }
-      const reply = await callAI(msg, data);
+      const reply = await callAI(msg, data, "", apiKey);
       setMsgs(p=>[...p,{role:"assistant",text:reply}]);
     } catch { setMsgs(p=>[...p,{role:"assistant",text:"Connection error."}]); }
     setLoading(false);
@@ -555,8 +562,27 @@ export default function App() {
         <button onClick={()=>{setView("portfolio");setSelAcct(null);}} style={{padding:"5px 12px",border:`1px solid ${view==="portfolio"?C.blue:C.border}`,borderRadius:6,background:view==="portfolio"?C.blueLt:C.white,color:view==="portfolio"?C.blue:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>📊 Portfolio</button>
         <button onClick={()=>setView("chat")} style={{padding:"5px 12px",border:`1px solid ${view==="chat"?C.blue:C.border}`,borderRadius:6,background:view==="chat"?C.blueLt:C.white,color:view==="chat"?C.blue:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>💬 Chat</button>
         <span style={{fontSize:9,fontWeight:600,color:C.blue,background:C.blueLt,padding:"3px 8px",borderRadius:100,marginLeft:4}}>POC</span>
+        <button onClick={()=>setShowSettings(!showSettings)} style={{padding:"5px 10px",border:`1px solid ${apiKey?C.green:C.border}`,borderRadius:6,background:apiKey?C.greenBg:C.white,color:apiKey?C.green:C.textMd,fontSize:11,fontWeight:600,cursor:"pointer",fontFamily:"inherit",marginLeft:4}}>
+          {apiKey?"🔑 API Connected":"⚙️ Add API Key"}
+        </button>
       </div>
     </div>
+
+    {/* API Key Modal */}
+    {showSettings&&<div style={{position:"fixed",top:0,left:0,right:0,bottom:0,background:"rgba(0,0,0,0.3)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center"}} onClick={()=>setShowSettings(false)}>
+      <div style={{background:C.white,borderRadius:12,padding:24,width:420,maxWidth:"90vw",boxShadow:"0 20px 60px rgba(0,0,0,0.15)"}} onClick={e=>e.stopPropagation()}>
+        <div style={{fontWeight:700,fontSize:16,color:C.navy,marginBottom:4}}>API Configuration</div>
+        <div style={{fontSize:12,color:C.textLt,marginBottom:16}}>Add your Anthropic API key to enable AI-powered analysis. Without it, the app uses local analysis.</div>
+        <div style={{fontSize:11,fontWeight:600,color:C.textMd,marginBottom:4}}>Anthropic API Key</div>
+        <input value={apiKey} onChange={e=>setApiKey(e.target.value)} placeholder="sk-ant-..." type="password"
+          style={{width:"100%",padding:"10px 12px",border:`1px solid ${C.border}`,borderRadius:8,fontSize:13,color:C.text,outline:"none",fontFamily:"inherit",background:C.bg,boxSizing:"border-box",marginBottom:12}}/>
+        <div style={{fontSize:10,color:C.textLt,marginBottom:16}}>Your key is stored in memory only and never sent anywhere except Anthropic's API. It is not persisted.</div>
+        <div style={{display:"flex",gap:8,justifyContent:"flex-end"}}>
+          {apiKey&&<button onClick={()=>{setApiKey("");}} style={{padding:"8px 16px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.red,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>Clear Key</button>}
+          <button onClick={()=>setShowSettings(false)} style={{padding:"8px 16px",border:"none",borderRadius:6,background:C.blue,color:C.white,fontSize:12,fontWeight:600,cursor:"pointer",fontFamily:"inherit"}}>{apiKey?"Save & Close":"Close"}</button>
+        </div>
+      </div>
+    </div>}
 
     <div style={{display:"flex",height:"calc(100vh - 49px)"}}>
       {/* Sidebar */}
@@ -619,11 +645,11 @@ export default function App() {
         </>}
 
         {view==="chat"&&<div style={{flex:1,display:"flex",flexDirection:"column"}}>
-          <div style={{flex:1,overflow:"auto",padding:16}}>
+          <div ref={chatScrollRef} style={{flex:1,overflow:"auto",padding:16}}>
             {msgs.length===0?<div style={{maxWidth:540,margin:"40px auto",textAlign:"center"}}>
               <div style={{fontSize:36,marginBottom:12}}>🔍</div>
               <h1 style={{fontSize:20,fontWeight:700,color:C.navy,margin:"0 0 6px"}}>Ask about any account or the portfolio</h1>
-              <p style={{color:C.textLt,fontSize:13,margin:"0 0 20px"}}>I synthesize CRM, calls, transactions, Slack, support, and risk data across {D_CRM.length} accounts.</p>
+              <p style={{color:C.textLt,fontSize:13,margin:"0 0 20px"}}>I synthesize CRM, calls, transactions, Slack, support, and risk data across {D_CRM.length} accounts.{!apiKey&&" Add your API key via ⚙️ for AI-powered responses."}</p>
               <div style={{display:"flex",flexWrap:"wrap",gap:6,justifyContent:"center"}}>
                 {quickQs.map((q,i)=><button key={i} onClick={()=>setInput(q)} style={{padding:"6px 12px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.textMd,fontSize:11,cursor:"pointer",fontFamily:"inherit",transition:"all 0.1s"}}
                   onMouseEnter={e=>{e.currentTarget.style.borderColor=C.blue;e.currentTarget.style.color=C.blue;}}
