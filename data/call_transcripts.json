@@ -2,136 +2,941 @@
   {
     "call_id": "CALL-20250307-4821",
     "account_id": "COAST-4821",
-    "account_name": "Meridian Freight Solutions",
     "date": "2025-03-07",
-    "time": "10:42 AM EST",
     "duration_min": 18,
     "rep": "Rachel Kim",
     "contact": "Mike Davis (Owner)",
     "direction": "Inbound",
     "sentiment": "Mixed - Positive on product, frustrated with process",
     "summary": "Mike called requesting credit line increase from $185K to $250K. Fleet expanding with 8 new trucks arriving in April. He mentioned a competitor (WEX) is offering lower transaction fees and faster line increase approvals. Frustrated that our line increase process takes 5-7 business days. However, expressed strong satisfaction with Coast's fuel discount network and real-time transaction visibility. Asked about volume discount tiers for 50+ truck fleets.",
-    "action_items": ["Process line increase request - pull 90-day financials", "Competitive analysis on WEX fee structure", "Check eligibility for enterprise tier upgrade"],
-    "tags": ["line_increase", "competitor_mention", "expansion", "retention_risk"]
+    "tags": [
+      "line_increase",
+      "competitor_mention",
+      "expansion",
+      "retention_risk"
+    ]
   },
   {
     "call_id": "CALL-20250218-4821",
     "account_id": "COAST-4821",
-    "account_name": "Meridian Freight Solutions",
     "date": "2025-02-18",
-    "time": "2:15 PM EST",
     "duration_min": 12,
     "rep": "James Ortiz",
     "contact": "Mike Davis (Owner)",
     "direction": "Outbound - Check-in",
     "sentiment": "Positive",
     "summary": "Routine quarterly check-in. Mike reports 3 new drivers added last month, all cards activated smoothly. No current complaints. Asked about Coast's EV fleet card support for future planning - they're evaluating electric trucks for urban routes. Mike mentioned they're bidding on a USPS last-mile contract that could double their fleet size to ~100 trucks within 12 months.",
-    "action_items": ["Flag for enterprise team if USPS contract wins", "Share EV fleet card roadmap info"],
-    "tags": ["check_in", "growth_signal", "ev_interest", "usps_contract"]
+    "tags": [
+      "check_in",
+      "growth_signal",
+      "ev_interest",
+      "usps_contract"
+    ]
   },
   {
     "call_id": "CALL-20250110-4821",
     "account_id": "COAST-4821",
-    "account_name": "Meridian Freight Solutions",
     "date": "2025-01-10",
-    "time": "11:30 AM EST",
     "duration_min": 8,
     "rep": "Rachel Kim",
     "contact": "Mike Davis (Owner)",
     "direction": "Inbound",
     "sentiment": "Initially frustrated, resolved positively",
     "summary": "Dispute on two transactions totaling $847.32. Driver used card at non-network station (independent truck stop in rural Alabama). Mike didn't realize the station wasn't in network. Investigated and confirmed legitimate purchase. Waived the out-of-network surcharge as a goodwill gesture. Mike appreciated the quick resolution and thanked the team.",
-    "action_items": ["Goodwill credit applied - $42.50", "Send Mike updated network station map for Alabama routes"],
-    "tags": ["dispute", "resolved", "goodwill_credit", "network_coverage"]
+    "tags": [
+      "dispute",
+      "resolved",
+      "goodwill_credit",
+      "network_coverage"
+    ]
   },
   {
     "call_id": "CALL-20250311-5192",
     "account_id": "COAST-5192",
-    "account_name": "QuickHaul Logistics Inc",
     "date": "2025-03-11",
-    "time": "3:20 PM EST",
     "duration_min": 14,
     "rep": "James Ortiz",
     "contact": "Raj Patel (Owner)",
     "direction": "Outbound - Account Review",
     "sentiment": "Evasive, concerning",
     "summary": "Called to follow up on account review and request for updated bank statements. Raj was evasive - claimed his accountant was on vacation and couldn't access QuickBooks. When pressed about the high utilization rate (70.7%), he said they had a 'big contract' but wouldn't provide details. Promised to send bank statements by end of week. Asked again about increasing credit line. Seemed nervous when asked about the 6 new card requests exceeding their stated fleet size of 12.",
-    "action_items": ["Escalate to risk team if docs not received by Friday 3/14", "Cross-reference fleet size with FMCSA records", "Monitor transactions daily"],
-    "tags": ["account_review", "evasive_behavior", "doc_request", "escalation_pending"]
+    "tags": [
+      "account_review",
+      "evasive_behavior",
+      "doc_request",
+      "escalation_pending"
+    ]
   },
   {
     "call_id": "CALL-20250215-5192",
     "account_id": "COAST-5192",
-    "account_name": "QuickHaul Logistics Inc",
     "date": "2025-02-15",
-    "time": "10:00 AM EST",
     "duration_min": 9,
     "rep": "James Ortiz",
     "contact": "Raj Patel (Owner)",
     "direction": "Outbound - Onboarding Follow-up",
     "sentiment": "Pushy, impatient",
     "summary": "Onboarding follow-up call. Raj immediately asked about increasing credit line from $45K to $100K - only 3 weeks into the account. Explained our standard 90-day review process for new accounts. He pushed back hard, claiming he needed it for a 'seasonal surge.' When asked about seasonal patterns, answers were vague. Reluctantly accepted the 90-day timeline.",
-    "action_items": ["Note: early line increase request is a risk signal", "Standard 90-day review scheduled for April 22"],
-    "tags": ["onboarding", "early_line_increase_request", "risk_signal"]
+    "tags": [
+      "onboarding",
+      "early_line_increase_request",
+      "risk_signal"
+    ]
   },
   {
     "call_id": "CALL-20250312-2104",
     "account_id": "COAST-2104",
-    "account_name": "Greenfield Transport Co",
     "date": "2025-03-12",
-    "time": "9:00 AM CST",
     "duration_min": 45,
     "rep": "Rachel Kim",
     "contact": "Linda Park (CFO)",
     "direction": "Scheduled - QBR",
     "sentiment": "Very positive, strategic",
     "summary": "Quarterly Business Review. Linda is very happy with Coast - described us as 'the best vendor relationship we have.' Confirming annual contract renewal. Key discussion points: (1) API integration for their fleet management system - their engineering team wants transaction data feeds. (2) Acquisition of Midwest Carriers (~30 trucks) - want to onboard them under Greenfield's account with consolidated billing. (3) Interested in volume discount tiers. (4) Asked about Coast Rewards program. Linda mentioned their board is pushing for 15% cost reduction across all vendors next FY - wants us to help build a business case showing Coast ROI.",
-    "action_items": ["Send API documentation to Linda's engineering team", "Schedule Midwest Carriers onboarding call", "Prepare ROI analysis for board presentation", "Connect with product team on volume discount proposal"],
-    "tags": ["qbr", "renewal", "api_integration", "acquisition", "enterprise_expansion"]
+    "tags": [
+      "qbr",
+      "renewal",
+      "api_integration",
+      "acquisition",
+      "enterprise_expansion"
+    ]
   },
   {
     "call_id": "CALL-20250228-2104",
     "account_id": "COAST-2104",
-    "account_name": "Greenfield Transport Co",
     "date": "2025-02-28",
-    "time": "2:00 PM CST",
     "duration_min": 22,
     "rep": "Rachel Kim",
     "contact": "Linda Park (CFO)",
     "direction": "Inbound",
     "sentiment": "Positive, forward-looking",
     "summary": "Linda called about the Midwest Carriers acquisition. Deal is expected to close April 15. They want to onboard ~30 trucks immediately after close. Discussed consolidated billing options and whether Midwest's existing fuel card data can be migrated. Linda wants a dedicated onboarding plan. Also asked about Coast's data export capabilities for their annual audit.",
-    "action_items": ["Prepare Midwest Carriers onboarding timeline", "Check data migration feasibility", "Send data export documentation for audit team"],
-    "tags": ["acquisition", "onboarding_planning", "data_migration", "audit"]
+    "tags": [
+      "acquisition",
+      "onboarding_planning",
+      "data_migration",
+      "audit"
+    ]
   },
   {
     "call_id": "CALL-20250305-6743",
     "account_id": "COAST-6743",
-    "account_name": "Patriot Plumbing & HVAC",
     "date": "2025-03-05",
-    "time": "11:15 AM EST",
     "duration_min": 15,
     "rep": "James Ortiz",
     "contact": "Dave Kowalski (Owner)",
     "direction": "Inbound",
     "sentiment": "Positive",
     "summary": "Dave called to request 7 additional cards for new HVAC technicians they're hiring. Very happy with BuildOps integration - says it's saving them 10+ hours per month on job costing. Asked if Coast cards can be set up with per-job spending limits that sync with BuildOps job IDs. Also mentioned they're opening a second location in Savannah, GA and will need cards for that crew too.",
-    "action_items": ["Process 7 new card requests", "Check BuildOps job-level spending limit feasibility with product", "Flag Savannah expansion for future card order"],
-    "tags": ["card_request", "expansion", "integration_feedback", "feature_request"]
+    "tags": [
+      "card_request",
+      "expansion",
+      "integration_feedback",
+      "feature_request"
+    ]
   },
   {
     "call_id": "CALL-20250310-7291",
     "account_id": "COAST-7291",
-    "account_name": "Apex Solar Installations",
     "date": "2025-03-10",
-    "time": "4:30 PM CST",
     "duration_min": 6,
     "rep": "James Ortiz",
     "contact": "Carlos Reyes (Owner)",
     "direction": "Outbound - Activation Follow-up",
     "sentiment": "Neutral, distracted",
     "summary": "Called Carlos about low card activation (only 3 of 10 cards used). He said his crew is 'still getting used to it' and that some installers prefer using personal cards and expensing later. Promised to push the team to switch but didn't seem very engaged. Call was short - Carlos said he was on a job site. Suggested a quick training session for his team but he said 'maybe next week.'",
-    "action_items": ["Schedule team training call for week of 3/17", "Send activation guide to Carlos via email", "Consider small activation incentive"],
-    "tags": ["activation_followup", "low_adoption", "training_needed"]
+    "tags": [
+      "activation_followup",
+      "low_adoption",
+      "training_needed"
+    ]
+  },
+  {
+    "call_id": "CALL-20250327-8000",
+    "account_id": "COAST-8000",
+    "date": "2025-02-06",
+    "duration_min": 13,
+    "rep": "Marcus Thompson",
+    "contact": "Brian Jackson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Brian Jackson happy with Coast platform and real-time visibility.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250226-8002",
+    "account_id": "COAST-8002",
+    "date": "2025-02-07",
+    "duration_min": 11,
+    "rep": "James Ortiz",
+    "contact": "Joe Clark (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Positive",
+    "summary": "Joe Clark called requesting 6 additional cards for new hires. Business expanding to Tucson, AZ. Very engaged.",
+    "tags": [
+      "expansion",
+      "card_request",
+      "growth_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250222-8003",
+    "account_id": "COAST-8003",
+    "date": "2025-03-19",
+    "duration_min": 13,
+    "rep": "Priya Sharma",
+    "contact": "Brian Thomas (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Brian Thomas praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250318-8004",
+    "account_id": "COAST-8004",
+    "date": "2025-01-14",
+    "duration_min": 6,
+    "rep": "Marcus Thompson",
+    "contact": "Larry White (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Neutral",
+    "summary": "Activation follow-up. Only 7 of 27 cards being used. Larry White said team still adjusting. Deferred training session.",
+    "tags": [
+      "activation_followup",
+      "low_adoption"
+    ]
+  },
+  {
+    "call_id": "CALL-20250317-8005",
+    "account_id": "COAST-8005",
+    "date": "2025-01-13",
+    "duration_min": 17,
+    "rep": "James Ortiz",
+    "contact": "Angela Wright (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Angela Wright called about a declined transaction at Chevron. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250326-8005",
+    "account_id": "COAST-8005",
+    "date": "2025-03-22",
+    "duration_min": 13,
+    "rep": "James Ortiz",
+    "contact": "Angela Wright (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Evasive",
+    "summary": "Account review call. Angela Wright was difficult to reach - took 3 attempts. When connected, gave vague answers about recent spend patterns.",
+    "tags": [
+      "account_review",
+      "evasive_behavior",
+      "risk_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250317-8006",
+    "account_id": "COAST-8006",
+    "date": "2025-03-20",
+    "duration_min": 13,
+    "rep": "Priya Sharma",
+    "contact": "Mark Harris (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Mark Harris praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250314-8007",
+    "account_id": "COAST-8007",
+    "date": "2025-01-28",
+    "duration_min": 15,
+    "rep": "Rachel Kim",
+    "contact": "Angela Carter (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Angela Carter mentioned plans to add 6 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250314-8008",
+    "account_id": "COAST-8008",
+    "date": "2025-03-12",
+    "duration_min": 11,
+    "rep": "James Ortiz",
+    "contact": "Angela Turner (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Positive",
+    "summary": "Angela Turner called requesting 8 additional cards for new hires. Business expanding to Sacramento, CA. Very engaged.",
+    "tags": [
+      "expansion",
+      "card_request",
+      "growth_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250223-8009",
+    "account_id": "COAST-8009",
+    "date": "2025-02-09",
+    "duration_min": 12,
+    "rep": "Priya Sharma",
+    "contact": "Chris Anderson (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Chris Anderson reported 6 transactions not syncing with QuickBooks Online. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250324-8010",
+    "account_id": "COAST-8010",
+    "date": "2025-01-25",
+    "duration_min": 11,
+    "rep": "Priya Sharma",
+    "contact": "Karen Scott (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Karen Scott reported 8 transactions not syncing with BuildOps. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250303-8010",
+    "account_id": "COAST-8010",
+    "date": "2025-01-01",
+    "duration_min": 16,
+    "rep": "Priya Sharma",
+    "contact": "Karen Scott (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Evasive",
+    "summary": "Account review call. Karen Scott was difficult to reach - took 3 attempts. When connected, gave vague answers about recent spend patterns.",
+    "tags": [
+      "account_review",
+      "evasive_behavior",
+      "risk_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250315-8011",
+    "account_id": "COAST-8011",
+    "date": "2025-01-07",
+    "duration_min": 12,
+    "rep": "Priya Sharma",
+    "contact": "Linda Harris (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Linda Harris reported 2 transactions not syncing with BuildOps. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250105-8012",
+    "account_id": "COAST-8012",
+    "date": "2025-03-19",
+    "duration_min": 15,
+    "rep": "Marcus Thompson",
+    "contact": "Robert Jackson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Evasive",
+    "summary": "Follow-up on flagged transactions. Robert Jackson claimed unfamiliarity with charges. Promised to 'look into it' but seemed dismissive.",
+    "tags": [
+      "account_review",
+      "evasive_behavior",
+      "risk_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250124-8012",
+    "account_id": "COAST-8012",
+    "date": "2025-01-14",
+    "duration_min": 18,
+    "rep": "Marcus Thompson",
+    "contact": "Robert Jackson (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Robert Jackson called about a declined transaction at Buc-ee's. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250120-8013",
+    "account_id": "COAST-8013",
+    "date": "2025-02-08",
+    "duration_min": 11,
+    "rep": "Marcus Thompson",
+    "contact": "Jeff Mitchell (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Jeff Mitchell happy with Coast platform and real-time visibility.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250204-8014",
+    "account_id": "COAST-8014",
+    "date": "2025-01-08",
+    "duration_min": 10,
+    "rep": "Marcus Thompson",
+    "contact": "Patricia Harris (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Patricia Harris mentioned plans to add 2 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250221-8015",
+    "account_id": "COAST-8015",
+    "date": "2025-01-02",
+    "duration_min": 15,
+    "rep": "Rachel Kim",
+    "contact": "Sarah Lewis (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Sarah Lewis mentioned plans to add 6 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250122-8016",
+    "account_id": "COAST-8016",
+    "date": "2025-02-08",
+    "duration_min": 9,
+    "rep": "Marcus Thompson",
+    "contact": "Maria Scott (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Maria Scott reported 4 transactions not syncing with Sage Intacct. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250110-8017",
+    "account_id": "COAST-8017",
+    "date": "2025-01-25",
+    "duration_min": 10,
+    "rep": "Marcus Thompson",
+    "contact": "Sarah Green (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Sarah Green called about a declined transaction at Love's Travel Stops. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250325-8018",
+    "account_id": "COAST-8018",
+    "date": "2025-03-15",
+    "duration_min": 15,
+    "rep": "James Ortiz",
+    "contact": "Robert Robinson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Evasive",
+    "summary": "Account review call. Robert Robinson was difficult to reach - took 3 attempts. When connected, gave vague answers about recent spend patterns.",
+    "tags": [
+      "account_review",
+      "evasive_behavior",
+      "risk_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250310-8018",
+    "account_id": "COAST-8018",
+    "date": "2025-02-19",
+    "duration_min": 8,
+    "rep": "James Ortiz",
+    "contact": "Robert Robinson (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Robert Robinson reported 3 transactions not syncing with QuickBooks Online. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250117-8019",
+    "account_id": "COAST-8019",
+    "date": "2025-03-27",
+    "duration_min": 16,
+    "rep": "Rachel Kim",
+    "contact": "James Jackson (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "James Jackson called about a declined transaction at TA Petro. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250111-8020",
+    "account_id": "COAST-8020",
+    "date": "2025-01-27",
+    "duration_min": 18,
+    "rep": "James Ortiz",
+    "contact": "Lisa Adams (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Lisa Adams reported 3 transactions not syncing with NetSuite. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250315-8021",
+    "account_id": "COAST-8021",
+    "date": "2025-03-16",
+    "duration_min": 18,
+    "rep": "Marcus Thompson",
+    "contact": "Kevin Thomas (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Kevin Thomas called about a declined transaction at Chevron. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250326-8022",
+    "account_id": "COAST-8022",
+    "date": "2025-01-03",
+    "duration_min": 14,
+    "rep": "Marcus Thompson",
+    "contact": "James Mitchell (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. James Mitchell praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250126-8023",
+    "account_id": "COAST-8023",
+    "date": "2025-01-08",
+    "duration_min": 8,
+    "rep": "Marcus Thompson",
+    "contact": "Angela Green (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Neutral",
+    "summary": "Activation follow-up. Only 8 of 15 cards being used. Angela Green said team still adjusting. Deferred training session.",
+    "tags": [
+      "activation_followup",
+      "low_adoption"
+    ]
+  },
+  {
+    "call_id": "CALL-20250314-8024",
+    "account_id": "COAST-8024",
+    "date": "2025-03-21",
+    "duration_min": 8,
+    "rep": "James Ortiz",
+    "contact": "Linda Nelson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Linda Nelson happy with Coast platform and real-time visibility.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250212-8025",
+    "account_id": "COAST-8025",
+    "date": "2025-01-13",
+    "duration_min": 8,
+    "rep": "James Ortiz",
+    "contact": "Greg Young (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Greg Young happy with Coast platform and spending controls.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250127-8026",
+    "account_id": "COAST-8026",
+    "date": "2025-03-08",
+    "duration_min": 8,
+    "rep": "Marcus Thompson",
+    "contact": "Lisa Hill (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Lisa Hill praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250221-8027",
+    "account_id": "COAST-8027",
+    "date": "2025-02-24",
+    "duration_min": 15,
+    "rep": "James Ortiz",
+    "contact": "Chris King (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Chris King mentioned plans to add 2 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250323-8029",
+    "account_id": "COAST-8029",
+    "date": "2025-02-03",
+    "duration_min": 9,
+    "rep": "Rachel Kim",
+    "contact": "Tom Johnson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Tom Johnson happy with Coast platform and mobile app.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250215-8030",
+    "account_id": "COAST-8030",
+    "date": "2025-03-24",
+    "duration_min": 18,
+    "rep": "Marcus Thompson",
+    "contact": "David Baker (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Positive",
+    "summary": "David Baker called requesting 7 additional cards for new hires. Business expanding to Louisville, KY. Very engaged.",
+    "tags": [
+      "expansion",
+      "card_request",
+      "growth_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250118-8031",
+    "account_id": "COAST-8031",
+    "date": "2025-02-14",
+    "duration_min": 16,
+    "rep": "Marcus Thompson",
+    "contact": "James Mitchell (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "James Mitchell called about a declined transaction at BP. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250327-8032",
+    "account_id": "COAST-8032",
+    "date": "2025-01-16",
+    "duration_min": 16,
+    "rep": "Marcus Thompson",
+    "contact": "Kevin Robinson (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Kevin Robinson reported 3 transactions not syncing with QuickBooks Online. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250113-8033",
+    "account_id": "COAST-8033",
+    "date": "2025-02-13",
+    "duration_min": 15,
+    "rep": "Priya Sharma",
+    "contact": "Patricia Turner (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Patricia Turner praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250122-8034",
+    "account_id": "COAST-8034",
+    "date": "2025-03-22",
+    "duration_min": 14,
+    "rep": "James Ortiz",
+    "contact": "Jennifer Clark (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Jennifer Clark reported 3 transactions not syncing with QuickBooks Online. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250105-8035",
+    "account_id": "COAST-8035",
+    "date": "2025-02-01",
+    "duration_min": 8,
+    "rep": "Rachel Kim",
+    "contact": "Linda Mitchell (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Neutral",
+    "summary": "Activation follow-up. Only 7 of 23 cards being used. Linda Mitchell said team still adjusting. Deferred training session.",
+    "tags": [
+      "activation_followup",
+      "low_adoption"
+    ]
+  },
+  {
+    "call_id": "CALL-20250226-8036",
+    "account_id": "COAST-8036",
+    "date": "2025-02-04",
+    "duration_min": 8,
+    "rep": "Priya Sharma",
+    "contact": "Jeff Harris (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Jeff Harris happy with Coast platform and fuel discounts.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250109-8038",
+    "account_id": "COAST-8038",
+    "date": "2025-01-18",
+    "duration_min": 12,
+    "rep": "James Ortiz",
+    "contact": "Joe Robinson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Routine check-in. No issues reported. Account performing well. Joe Robinson happy with Coast platform and real-time visibility.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250123-8039",
+    "account_id": "COAST-8039",
+    "date": "2025-02-27",
+    "duration_min": 11,
+    "rep": "Marcus Thompson",
+    "contact": "Kevin Carter (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Kevin Carter called about a declined transaction at BP. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250203-8040",
+    "account_id": "COAST-8040",
+    "date": "2025-01-13",
+    "duration_min": 9,
+    "rep": "James Ortiz",
+    "contact": "Jennifer Wright (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Jennifer Wright praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250322-8041",
+    "account_id": "COAST-8041",
+    "date": "2025-01-25",
+    "duration_min": 15,
+    "rep": "James Ortiz",
+    "contact": "Maria Baker (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Maria Baker mentioned plans to add 4 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250215-8042",
+    "account_id": "COAST-8042",
+    "date": "2025-03-12",
+    "duration_min": 8,
+    "rep": "Rachel Kim",
+    "contact": "Linda Robinson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Linda Robinson mentioned plans to add 4 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250108-8043",
+    "account_id": "COAST-8043",
+    "date": "2025-03-12",
+    "duration_min": 8,
+    "rep": "James Ortiz",
+    "contact": "Brian Nelson (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Brian Nelson praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250115-8044",
+    "account_id": "COAST-8044",
+    "date": "2025-01-26",
+    "duration_min": 10,
+    "rep": "Marcus Thompson",
+    "contact": "Maria Perez (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Maria Perez mentioned plans to add 8 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250219-8045",
+    "account_id": "COAST-8045",
+    "date": "2025-03-11",
+    "duration_min": 14,
+    "rep": "Priya Sharma",
+    "contact": "Steve Perez (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Steve Perez mentioned plans to add 8 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250314-8046",
+    "account_id": "COAST-8046",
+    "date": "2025-03-16",
+    "duration_min": 18,
+    "rep": "Rachel Kim",
+    "contact": "Brian White (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Brian White called about a declined transaction at BP. Card was near limit. Resolved by explaining available credit. Minor frustration.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
+  },
+  {
+    "call_id": "CALL-20250206-8047",
+    "account_id": "COAST-8047",
+    "date": "2025-03-03",
+    "duration_min": 9,
+    "rep": "Rachel Kim",
+    "contact": "Tom Hill (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Quarterly touch base. Tom Hill mentioned plans to add 4 more vehicles next quarter. Overall satisfied with service.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250322-8048",
+    "account_id": "COAST-8048",
+    "date": "2025-02-19",
+    "duration_min": 11,
+    "rep": "Priya Sharma",
+    "contact": "Chris Adams (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Positive",
+    "summary": "Follow-up call. Chris Adams praised the real-time transaction visibility. Asked about upcoming features. No concerns.",
+    "tags": [
+      "check_in",
+      "satisfied"
+    ]
+  },
+  {
+    "call_id": "CALL-20250220-8049",
+    "account_id": "COAST-8049",
+    "date": "2025-02-23",
+    "duration_min": 14,
+    "rep": "Priya Sharma",
+    "contact": "Carlos Carter (Owner)",
+    "direction": "Outbound",
+    "sentiment": "Evasive",
+    "summary": "Follow-up on flagged transactions. Carlos Carter claimed unfamiliarity with charges. Promised to 'look into it' but seemed dismissive.",
+    "tags": [
+      "account_review",
+      "evasive_behavior",
+      "risk_signal"
+    ]
+  },
+  {
+    "call_id": "CALL-20250210-8049",
+    "account_id": "COAST-8049",
+    "date": "2025-03-17",
+    "duration_min": 17,
+    "rep": "Priya Sharma",
+    "contact": "Carlos Carter (Owner)",
+    "direction": "Inbound",
+    "sentiment": "Mixed",
+    "summary": "Carlos Carter reported 5 transactions not syncing with Sage Intacct. Promised to escalate to engineering.",
+    "tags": [
+      "support_issue",
+      "resolved"
+    ]
   }
 ]

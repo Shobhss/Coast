@@ -2,160 +2,2154 @@
   {
     "account_id": "COAST-4821",
     "account_name": "Meridian Freight Solutions",
-    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
-    "summary": {
-      "total_spend": 71200,
-      "avg_daily_spend": 2373,
-      "transaction_count": 312,
-      "unique_drivers": 44,
-      "unique_merchants": 67,
-      "fuel_spend": 58400,
-      "non_fuel_spend": 12800,
-      "avg_transaction_amount": 228
-    },
+    "total_spend": 71200,
+    "avg_daily": 2373,
+    "txn_count": 312,
+    "fuel_spend": 58400,
+    "non_fuel": 12800,
+    "utilization_pct": 0,
     "top_merchants": [
-      {"merchant": "Pilot Flying J", "spend": 28400, "txn_count": 124, "category": "Fuel"},
-      {"merchant": "Love's Travel Stops", "spend": 19800, "txn_count": 87, "category": "Fuel"},
-      {"merchant": "TA Petro", "spend": 12100, "txn_count": 52, "category": "Fuel"},
-      {"merchant": "AutoZone", "spend": 3200, "txn_count": 8, "category": "Vehicle Maintenance"},
-      {"merchant": "Walmart", "spend": 2100, "txn_count": 14, "category": "Supplies"}
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 28400
+      },
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 19800
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 12100
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 3200
+      },
+      {
+        "merchant": "Walmart",
+        "spend": 2100
+      }
     ],
     "anomalies": [
-      {"type": "High Value", "detail": "3 transactions over $800 (avg is $228)", "severity": "Low", "driver": "Carlos Mendez (#38)"},
-      {"type": "Pattern Change", "detail": "Weekend spend up 34% vs prior month", "severity": "Medium", "driver": "Multiple"},
-      {"type": "Location", "detail": "2 transactions at non-network stations (rural Alabama)", "severity": "Low", "driver": "James Wilson (#12)"}
+      {
+        "detail": "3 transactions over $800 (avg is $228)",
+        "severity": "Low"
+      },
+      {
+        "detail": "Weekend spend up 34% vs prior month",
+        "severity": "Medium"
+      },
+      {
+        "detail": "2 transactions at non-network stations (rural Alabama)",
+        "severity": "Low"
+      }
     ],
-    "spend_trend": [
-      {"week": "Feb 11-17", "spend": 16200},
-      {"week": "Feb 18-24", "spend": 17800},
-      {"week": "Feb 25-Mar 3", "spend": 18100},
-      {"week": "Mar 4-12", "spend": 19100}
+    "trend": [
+      16200,
+      17800,
+      18100,
+      19100
     ]
   },
   {
     "account_id": "COAST-5192",
     "account_name": "QuickHaul Logistics Inc",
-    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
-    "summary": {
-      "total_spend": 31800,
-      "avg_daily_spend": 1060,
-      "transaction_count": 89,
-      "unique_drivers": 14,
-      "unique_merchants": 22,
-      "fuel_spend": 18700,
-      "non_fuel_spend": 13100,
-      "avg_transaction_amount": 357
-    },
+    "total_spend": 31800,
+    "avg_daily": 1060,
+    "txn_count": 89,
+    "fuel_spend": 18700,
+    "non_fuel": 13100,
+    "utilization_pct": 0,
     "top_merchants": [
-      {"merchant": "Sunoco", "spend": 14200, "txn_count": 38, "category": "Fuel"},
-      {"merchant": "UNKNOWN MERCHANT - ID#449281", "spend": 8900, "txn_count": 12, "category": "Unknown"},
-      {"merchant": "Shell", "spend": 5100, "txn_count": 18, "category": "Fuel"},
-      {"merchant": "Home Depot", "spend": 2400, "txn_count": 5, "category": "Supplies"},
-      {"merchant": "Best Buy", "spend": 1200, "txn_count": 2, "category": "Electronics"}
+      {
+        "merchant": "Sunoco",
+        "spend": 14200
+      },
+      {
+        "merchant": "UNKNOWN MERCHANT - ID#449281",
+        "spend": 8900
+      },
+      {
+        "merchant": "Shell",
+        "spend": 5100
+      },
+      {
+        "merchant": "Home Depot",
+        "spend": 2400
+      },
+      {
+        "merchant": "Best Buy",
+        "spend": 1200
+      }
     ],
     "anomalies": [
-      {"type": "Velocity", "detail": "Spend velocity 74% above projected for fleet size of 12", "severity": "High", "driver": "Multiple"},
-      {"type": "Unknown Merchant", "detail": "$8,900 at single unidentified merchant in 5 days (12 transactions)", "severity": "Critical", "driver": "Raj Patel (#01), Amit Singh (#03)"},
-      {"type": "Category Mismatch", "detail": "Electronics purchases ($1,200 at Best Buy) inconsistent with delivery fleet", "severity": "Medium", "driver": "Raj Patel (#01)"},
-      {"type": "Card Count", "detail": "18 active cards for 12-truck fleet (150% ratio)", "severity": "High", "driver": "N/A"},
-      {"type": "Off-Hours", "detail": "11 transactions between 11PM-4AM in residential areas", "severity": "Medium", "driver": "Multiple"}
+      {
+        "detail": "Spend velocity 74% above projected for fleet size of 12",
+        "severity": "High"
+      },
+      {
+        "detail": "$8,900 at single unidentified merchant in 5 days (12 transactions)",
+        "severity": "Critical"
+      },
+      {
+        "detail": "Electronics purchases ($1,200 at Best Buy) inconsistent with delivery fleet",
+        "severity": "Medium"
+      },
+      {
+        "detail": "18 active cards for 12-truck fleet (150% ratio)",
+        "severity": "High"
+      },
+      {
+        "detail": "11 transactions between 11PM-4AM in residential areas",
+        "severity": "Medium"
+      }
     ],
-    "spend_trend": [
-      {"week": "Feb 11-17", "spend": 5200},
-      {"week": "Feb 18-24", "spend": 6800},
-      {"week": "Feb 25-Mar 3", "spend": 8900},
-      {"week": "Mar 4-12", "spend": 10900}
+    "trend": [
+      5200,
+      6800,
+      8900,
+      10900
     ]
   },
   {
     "account_id": "COAST-2104",
     "account_name": "Greenfield Transport Co",
-    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
-    "summary": {
-      "total_spend": 212500,
-      "avg_daily_spend": 7083,
-      "transaction_count": 1847,
-      "unique_drivers": 138,
-      "unique_merchants": 214,
-      "fuel_spend": 189200,
-      "non_fuel_spend": 23300,
-      "avg_transaction_amount": 115
-    },
+    "total_spend": 212500,
+    "avg_daily": 7083,
+    "txn_count": 1847,
+    "fuel_spend": 189200,
+    "non_fuel": 23300,
+    "utilization_pct": 0,
     "top_merchants": [
-      {"merchant": "Pilot Flying J", "spend": 78200, "txn_count": 682, "category": "Fuel"},
-      {"merchant": "Love's Travel Stops", "spend": 54100, "txn_count": 471, "category": "Fuel"},
-      {"merchant": "Casey's General Store", "spend": 31800, "txn_count": 277, "category": "Fuel"},
-      {"merchant": "TA Petro", "spend": 18400, "txn_count": 160, "category": "Fuel"},
-      {"merchant": "Ryder Truck Rental", "spend": 6700, "txn_count": 4, "category": "Vehicle Maintenance"}
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 78200
+      },
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 54100
+      },
+      {
+        "merchant": "Casey's General Store",
+        "spend": 31800
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 18400
+      },
+      {
+        "merchant": "Ryder Truck Rental",
+        "spend": 6700
+      }
     ],
     "anomalies": [],
-    "spend_trend": [
-      {"week": "Feb 11-17", "spend": 51200},
-      {"week": "Feb 18-24", "spend": 53400},
-      {"week": "Feb 25-Mar 3", "spend": 54100},
-      {"week": "Mar 4-12", "spend": 53800}
+    "trend": [
+      51200,
+      53400,
+      54100,
+      53800
     ]
   },
   {
     "account_id": "COAST-6743",
     "account_name": "Patriot Plumbing & HVAC",
-    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
-    "summary": {
-      "total_spend": 42100,
-      "avg_daily_spend": 1403,
-      "transaction_count": 187,
-      "unique_drivers": 28,
-      "unique_merchants": 48,
-      "fuel_spend": 22800,
-      "non_fuel_spend": 19300,
-      "avg_transaction_amount": 225
-    },
+    "total_spend": 42100,
+    "avg_daily": 1403,
+    "txn_count": 187,
+    "fuel_spend": 22800,
+    "non_fuel": 19300,
+    "utilization_pct": 0,
     "top_merchants": [
-      {"merchant": "Shell", "spend": 9200, "txn_count": 42, "category": "Fuel"},
-      {"merchant": "BP", "spend": 7100, "txn_count": 33, "category": "Fuel"},
-      {"merchant": "Home Depot", "spend": 8400, "txn_count": 28, "category": "Job Supplies"},
-      {"merchant": "Ferguson Enterprises", "spend": 6200, "txn_count": 12, "category": "Plumbing Supplies"},
-      {"merchant": "Carrier HVAC Distributor", "spend": 4800, "txn_count": 6, "category": "HVAC Equipment"}
+      {
+        "merchant": "Shell",
+        "spend": 9200
+      },
+      {
+        "merchant": "BP",
+        "spend": 7100
+      },
+      {
+        "merchant": "Home Depot",
+        "spend": 8400
+      },
+      {
+        "merchant": "Ferguson Enterprises",
+        "spend": 6200
+      },
+      {
+        "merchant": "Carrier HVAC Distributor",
+        "spend": 4800
+      }
     ],
     "anomalies": [
-      {"type": "Pattern Change", "detail": "Non-fuel spend increased 22% - likely due to HVAC expansion", "severity": "Low", "driver": "Multiple new hires"}
+      {
+        "detail": "Non-fuel spend increased 22% - likely due to HVAC expansion",
+        "severity": "Low"
+      }
     ],
-    "spend_trend": [
-      {"week": "Feb 11-17", "spend": 9200},
-      {"week": "Feb 18-24", "spend": 10100},
-      {"week": "Feb 25-Mar 3", "spend": 10800},
-      {"week": "Mar 4-12", "spend": 12000}
+    "trend": [
+      9200,
+      10100,
+      10800,
+      12000
     ]
   },
   {
     "account_id": "COAST-7291",
     "account_name": "Apex Solar Installations",
-    "period": "Last 30 Days (Feb 11 - Mar 12, 2025)",
-    "summary": {
-      "total_spend": 4200,
-      "avg_daily_spend": 140,
-      "transaction_count": 18,
-      "unique_drivers": 3,
-      "unique_merchants": 8,
-      "fuel_spend": 2900,
-      "non_fuel_spend": 1300,
-      "avg_transaction_amount": 233
-    },
+    "total_spend": 4200,
+    "avg_daily": 140,
+    "txn_count": 18,
+    "fuel_spend": 2900,
+    "non_fuel": 1300,
+    "utilization_pct": 0,
     "top_merchants": [
-      {"merchant": "Circle K", "spend": 1400, "txn_count": 7, "category": "Fuel"},
-      {"merchant": "Valero", "spend": 1100, "txn_count": 5, "category": "Fuel"},
-      {"merchant": "Home Depot", "spend": 800, "txn_count": 3, "category": "Supplies"},
-      {"merchant": "AutoZone", "spend": 500, "txn_count": 2, "category": "Vehicle Maintenance"}
+      {
+        "merchant": "Circle K",
+        "spend": 1400
+      },
+      {
+        "merchant": "Valero",
+        "spend": 1100
+      },
+      {
+        "merchant": "Home Depot",
+        "spend": 800
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 500
+      }
     ],
     "anomalies": [
-      {"type": "Low Activation", "detail": "Only 3 of 10 issued cards have been used (30% activation rate)", "severity": "Medium", "driver": "7 drivers inactive"},
-      {"type": "Low Utilization", "detail": "14% utilization vs 40% target for fleet size", "severity": "Medium", "driver": "N/A"}
+      {
+        "detail": "Only 3 of 10 issued cards have been used (30% activation rate)",
+        "severity": "Medium"
+      },
+      {
+        "detail": "14% utilization vs 40% target for fleet size",
+        "severity": "Medium"
+      }
     ],
-    "spend_trend": [
-      {"week": "Feb 11-17", "spend": 800},
-      {"week": "Feb 18-24", "spend": 1100},
-      {"week": "Feb 25-Mar 3", "spend": 1200},
-      {"week": "Mar 4-12", "spend": 1100}
+    "trend": [
+      800,
+      1100,
+      1200,
+      1100
+    ]
+  },
+  {
+    "account_id": "COAST-8000",
+    "account_name": "Zenith Climate Services",
+    "total_spend": 126597,
+    "avg_daily": 4219,
+    "txn_count": 504,
+    "fuel_spend": 71131,
+    "non_fuel": 55466,
+    "utilization_pct": 35.5,
+    "top_merchants": [
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 29192
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 19538
+      },
+      {
+        "merchant": "Shell",
+        "spend": 22401
+      },
+      {
+        "merchant": "Tractor Supply",
+        "spend": 26931
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      30579,
+      31627,
+      31117,
+      32226
+    ]
+  },
+  {
+    "account_id": "COAST-8001",
+    "account_name": "Pioneer Logistics",
+    "total_spend": 123117,
+    "avg_daily": 4103,
+    "txn_count": 352,
+    "fuel_spend": 81809,
+    "non_fuel": 41308,
+    "utilization_pct": 37.5,
+    "top_merchants": [
+      {
+        "merchant": "Buc-ee's",
+        "spend": 26416
+      },
+      {
+        "merchant": "Valero",
+        "spend": 26420
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 28973
+      },
+      {
+        "merchant": "Walmart",
+        "spend": 21697
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      29154,
+      29872,
+      30504,
+      30787
+    ]
+  },
+  {
+    "account_id": "COAST-8002",
+    "account_name": "Ridgeline Landscaping",
+    "total_spend": 185145,
+    "avg_daily": 6171,
+    "txn_count": 1143,
+    "fuel_spend": 85698,
+    "non_fuel": 99447,
+    "utilization_pct": 45.8,
+    "top_merchants": [
+      {
+        "merchant": "TA Petro",
+        "spend": 29653
+      },
+      {
+        "merchant": "Chevron",
+        "spend": 19281
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 36764
+      },
+      {
+        "merchant": "ACE Hardware",
+        "spend": 31952
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      43431,
+      46905,
+      48145,
+      46548
+    ]
+  },
+  {
+    "account_id": "COAST-8003",
+    "account_name": "Allied Foods",
+    "total_spend": 45578,
+    "avg_daily": 1519,
+    "txn_count": 295,
+    "fuel_spend": 27664,
+    "non_fuel": 17914,
+    "utilization_pct": 32.0,
+    "top_merchants": [
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 11531
+      },
+      {
+        "merchant": "Speedway",
+        "spend": 6462
+      },
+      {
+        "merchant": "Chevron",
+        "spend": 9671
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 9956
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Minor pattern change: non-fuel spend up",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      10555,
+      10972,
+      11641,
+      12009
+    ]
+  },
+  {
+    "account_id": "COAST-8004",
+    "account_name": "Ironclad Mechanical",
+    "total_spend": 34228,
+    "avg_daily": 1140,
+    "txn_count": 210,
+    "fuel_spend": 16304,
+    "non_fuel": 17924,
+    "utilization_pct": 34.2,
+    "top_merchants": [
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 4902
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 5179
+      },
+      {
+        "merchant": "Wawa",
+        "spend": 6223
+      },
+      {
+        "merchant": "Fastenal",
+        "spend": 8803
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Only 6/27 cards active (22%)",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      8379,
+      8459,
+      8642,
+      8563
+    ]
+  },
+  {
+    "account_id": "COAST-8005",
+    "account_name": "National Roof & Exterior",
+    "total_spend": 20688,
+    "avg_daily": 689,
+    "txn_count": 78,
+    "fuel_spend": 8393,
+    "non_fuel": 12295,
+    "utilization_pct": 62.1,
+    "top_merchants": [
+      {
+        "merchant": "QuikTrip",
+        "spend": 3107
+      },
+      {
+        "merchant": "Chevron",
+        "spend": 2124
+      },
+      {
+        "merchant": "Valero",
+        "spend": 3162
+      },
+      {
+        "merchant": "Lowe's",
+        "spend": 6194
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Off-hours transactions (5 in residential areas)",
+        "severity": "Medium"
+      },
+      {
+        "detail": "$7K at unidentified merchant",
+        "severity": "Critical"
+      }
+    ],
+    "trend": [
+      3103,
+      4137,
+      5689,
+      7758
+    ]
+  },
+  {
+    "account_id": "COAST-8006",
+    "account_name": "Granite Electric",
+    "total_spend": 105590,
+    "avg_daily": 3519,
+    "txn_count": 377,
+    "fuel_spend": 52152,
+    "non_fuel": 53438,
+    "utilization_pct": 36.1,
+    "top_merchants": [
+      {
+        "merchant": "QuikTrip",
+        "spend": 22488
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 8932
+      },
+      {
+        "merchant": "Speedway",
+        "spend": 20732
+      },
+      {
+        "merchant": "Grainger",
+        "spend": 28070
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      24510,
+      25863,
+      26194,
+      28420
+    ]
+  },
+  {
+    "account_id": "COAST-8007",
+    "account_name": "Regal Roof & Exterior",
+    "total_spend": 29699,
+    "avg_daily": 989,
+    "txn_count": 150,
+    "fuel_spend": 12611,
+    "non_fuel": 17088,
+    "utilization_pct": 47.8,
+    "top_merchants": [
+      {
+        "merchant": "Wawa",
+        "spend": 4882
+      },
+      {
+        "merchant": "Casey's General Store",
+        "spend": 2363
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 5366
+      },
+      {
+        "merchant": "Grainger",
+        "spend": 6849
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      6761,
+      6494,
+      6831,
+      6453
+    ]
+  },
+  {
+    "account_id": "COAST-8008",
+    "account_name": "United Pest Solutions",
+    "total_spend": 126346,
+    "avg_daily": 4211,
+    "txn_count": 440,
+    "fuel_spend": 63401,
+    "non_fuel": 62945,
+    "utilization_pct": 36.8,
+    "top_merchants": [
+      {
+        "merchant": "Shell",
+        "spend": 30798
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 13535
+      },
+      {
+        "merchant": "Exxon",
+        "spend": 19068
+      },
+      {
+        "merchant": "Lowe's",
+        "spend": 36030
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      31438,
+      30445,
+      32263,
+      33685
+    ]
+  },
+  {
+    "account_id": "COAST-8009",
+    "account_name": "Apex Environmental",
+    "total_spend": 28971,
+    "avg_daily": 965,
+    "txn_count": 171,
+    "fuel_spend": 22028,
+    "non_fuel": 6943,
+    "utilization_pct": 63.0,
+    "top_merchants": [
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 9780
+      },
+      {
+        "merchant": "Buc-ee's",
+        "spend": 4871
+      },
+      {
+        "merchant": "Circle K",
+        "spend": 7377
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 3662
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Weekend spend up 37%",
+        "severity": "Low"
+      },
+      {
+        "detail": "Utilization trending up (63.0% current)",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      6257,
+      6397,
+      6907,
+      6489
+    ]
+  },
+  {
+    "account_id": "COAST-8010",
+    "account_name": "Northstar Pest Solutions",
+    "total_spend": 47296,
+    "avg_daily": 1576,
+    "txn_count": 215,
+    "fuel_spend": 27680,
+    "non_fuel": 19616,
+    "utilization_pct": 80.0,
+    "top_merchants": [
+      {
+        "merchant": "TA Petro",
+        "spend": 9143
+      },
+      {
+        "merchant": "QuikTrip",
+        "spend": 8568
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 9969
+      },
+      {
+        "merchant": "Lowe's",
+        "spend": 11470
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "22 active cards for 13-truck fleet",
+        "severity": "High"
+      },
+      {
+        "detail": "$5K at unidentified merchant",
+        "severity": "Critical"
+      },
+      {
+        "detail": "Off-hours transactions (6 in residential areas)",
+        "severity": "Medium"
+      },
+      {
+        "detail": "Unusual merchant categories for Pest control",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      7094,
+      9459,
+      13006,
+      17736
+    ]
+  },
+  {
+    "account_id": "COAST-8011",
+    "account_name": "All-Star Electrical Services",
+    "total_spend": 52053,
+    "avg_daily": 1735,
+    "txn_count": 371,
+    "fuel_spend": 19579,
+    "non_fuel": 32474,
+    "utilization_pct": 40.9,
+    "top_merchants": [
+      {
+        "merchant": "Wawa",
+        "spend": 6017
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 4307
+      },
+      {
+        "merchant": "Exxon",
+        "spend": 9255
+      },
+      {
+        "merchant": "Tractor Supply",
+        "spend": 12201
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Minor pattern change: non-fuel spend up",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      12749,
+      12671,
+      11063,
+      12758
+    ]
+  },
+  {
+    "account_id": "COAST-8012",
+    "account_name": "Summit Outdoor Services",
+    "total_spend": 56164,
+    "avg_daily": 1872,
+    "txn_count": 227,
+    "fuel_spend": 23849,
+    "non_fuel": 32315,
+    "utilization_pct": 74.4,
+    "top_merchants": [
+      {
+        "merchant": "Maverik",
+        "spend": 8800
+      },
+      {
+        "merchant": "BP",
+        "spend": 6175
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 8874
+      },
+      {
+        "merchant": "Menards",
+        "spend": 14962
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "$7K at unidentified merchant",
+        "severity": "Critical"
+      },
+      {
+        "detail": "23 active cards for 18-truck fleet",
+        "severity": "High"
+      },
+      {
+        "detail": "Spend velocity 69% above projected for fleet size",
+        "severity": "High"
+      },
+      {
+        "detail": "Unusual merchant categories for Landscaping services",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      8424,
+      11232,
+      15445,
+      21061
+    ]
+  },
+  {
+    "account_id": "COAST-8013",
+    "account_name": "Eagle Electric",
+    "total_spend": 111285,
+    "avg_daily": 3709,
+    "txn_count": 636,
+    "fuel_spend": 66427,
+    "non_fuel": 44858,
+    "utilization_pct": 31.1,
+    "top_merchants": [
+      {
+        "merchant": "Wawa",
+        "spend": 33205
+      },
+      {
+        "merchant": "Valero",
+        "spend": 15636
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 17586
+      },
+      {
+        "merchant": "Fastenal",
+        "spend": 14892
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      26394,
+      27006,
+      28626,
+      27870
+    ]
+  },
+  {
+    "account_id": "COAST-8014",
+    "account_name": "ProTech Waste Services",
+    "total_spend": 87243,
+    "avg_daily": 2908,
+    "txn_count": 303,
+    "fuel_spend": 57630,
+    "non_fuel": 29613,
+    "utilization_pct": 44.7,
+    "top_merchants": [
+      {
+        "merchant": "Valero",
+        "spend": 19984
+      },
+      {
+        "merchant": "QuikTrip",
+        "spend": 11482
+      },
+      {
+        "merchant": "RaceTrac",
+        "spend": 26164
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 16739
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      21662,
+      21058,
+      21471,
+      23248
+    ]
+  },
+  {
+    "account_id": "COAST-8015",
+    "account_name": "Diamond Fire Protection",
+    "total_spend": 7298,
+    "avg_daily": 243,
+    "txn_count": 23,
+    "fuel_spend": 2754,
+    "non_fuel": 4544,
+    "utilization_pct": 34.7,
+    "top_merchants": [
+      {
+        "merchant": "BP",
+        "spend": 834
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 677
+      },
+      {
+        "merchant": "RaceTrac",
+        "spend": 1243
+      },
+      {
+        "merchant": "Grainger",
+        "spend": 1535
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      1581,
+      1568,
+      1673,
+      1649
+    ]
+  },
+  {
+    "account_id": "COAST-8016",
+    "account_name": "Capital Fresh Logistics",
+    "total_spend": 49198,
+    "avg_daily": 1639,
+    "txn_count": 396,
+    "fuel_spend": 28434,
+    "non_fuel": 20764,
+    "utilization_pct": 43.3,
+    "top_merchants": [
+      {
+        "merchant": "RaceTrac",
+        "spend": 11724
+      },
+      {
+        "merchant": "BP",
+        "spend": 7252
+      },
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 9458
+      },
+      {
+        "merchant": "FleetPride",
+        "spend": 8788
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      12190,
+      11234,
+      12144,
+      10549
+    ]
+  },
+  {
+    "account_id": "COAST-8017",
+    "account_name": "Legacy Windshield Pros",
+    "total_spend": 7307,
+    "avg_daily": 243,
+    "txn_count": 64,
+    "fuel_spend": 3935,
+    "non_fuel": 3372,
+    "utilization_pct": 47.6,
+    "top_merchants": [
+      {
+        "merchant": "TA Petro",
+        "spend": 1658
+      },
+      {
+        "merchant": "Valero",
+        "spend": 871
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 1406
+      },
+      {
+        "merchant": "Tractor Supply",
+        "spend": 1229
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      1647,
+      1583,
+      1738,
+      1715
+    ]
+  },
+  {
+    "account_id": "COAST-8018",
+    "account_name": "Cascade Quick Delivery",
+    "total_spend": 7738,
+    "avg_daily": 257,
+    "txn_count": 42,
+    "fuel_spend": 5044,
+    "non_fuel": 2694,
+    "utilization_pct": 57.3,
+    "top_merchants": [
+      {
+        "merchant": "Sunoco",
+        "spend": 1708
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 1518
+      },
+      {
+        "merchant": "Shell",
+        "spend": 1818
+      },
+      {
+        "merchant": "FleetPride",
+        "spend": 1091
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "$4K at unidentified merchant",
+        "severity": "Critical"
+      },
+      {
+        "detail": "Off-hours transactions (8 in residential areas)",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      1160,
+      1547,
+      2127,
+      2901
+    ]
+  },
+  {
+    "account_id": "COAST-8019",
+    "account_name": "Harbor Cold Chain",
+    "total_spend": 26989,
+    "avg_daily": 899,
+    "txn_count": 136,
+    "fuel_spend": 20499,
+    "non_fuel": 6490,
+    "utilization_pct": 44.0,
+    "top_merchants": [
+      {
+        "merchant": "TA Petro",
+        "spend": 9483
+      },
+      {
+        "merchant": "Exxon",
+        "spend": 4781
+      },
+      {
+        "merchant": "QuikTrip",
+        "spend": 6235
+      },
+      {
+        "merchant": "Walmart",
+        "spend": 3560
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "2 transactions at non-network stations",
+        "severity": "Low"
+      },
+      {
+        "detail": "Weekend spend up 38%",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      5753,
+      6047,
+      6697,
+      6081
+    ]
+  },
+  {
+    "account_id": "COAST-8020",
+    "account_name": "Titan Foods",
+    "total_spend": 43794,
+    "avg_daily": 1459,
+    "txn_count": 227,
+    "fuel_spend": 30400,
+    "non_fuel": 13394,
+    "utilization_pct": 50.3,
+    "top_merchants": [
+      {
+        "merchant": "Shell",
+        "spend": 13759
+      },
+      {
+        "merchant": "Buc-ee's",
+        "spend": 5900
+      },
+      {
+        "merchant": "Speedway",
+        "spend": 10741
+      },
+      {
+        "merchant": "Ryder Truck Rental",
+        "spend": 7655
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Utilization trending up (50.3% current)",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      10647,
+      10759,
+      10834,
+      9987
+    ]
+  },
+  {
+    "account_id": "COAST-8021",
+    "account_name": "Elite Pool Services",
+    "total_spend": 49962,
+    "avg_daily": 1665,
+    "txn_count": 427,
+    "fuel_spend": 29660,
+    "non_fuel": 20302,
+    "utilization_pct": 50.6,
+    "top_merchants": [
+      {
+        "merchant": "Buc-ee's",
+        "spend": 9156
+      },
+      {
+        "merchant": "Speedway",
+        "spend": 7737
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 12767
+      },
+      {
+        "merchant": "Tractor Supply",
+        "spend": 8364
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Utilization trending up (50.6% current)",
+        "severity": "Medium"
+      },
+      {
+        "detail": "Weekend spend up 38%",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      11068,
+      11848,
+      10811,
+      11707
+    ]
+  },
+  {
+    "account_id": "COAST-8022",
+    "account_name": "Central Fire Protection",
+    "total_spend": 178906,
+    "avg_daily": 5963,
+    "txn_count": 1482,
+    "fuel_spend": 74546,
+    "non_fuel": 104360,
+    "utilization_pct": 37.9,
+    "top_merchants": [
+      {
+        "merchant": "Wawa",
+        "spend": 30496
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 16044
+      },
+      {
+        "merchant": "Speedway",
+        "spend": 28006
+      },
+      {
+        "merchant": "ACE Hardware",
+        "spend": 33814
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      42245,
+      44376,
+      45166,
+      47194
+    ]
+  },
+  {
+    "account_id": "COAST-8023",
+    "account_name": "Prime Fire Protection",
+    "total_spend": 34140,
+    "avg_daily": 1138,
+    "txn_count": 109,
+    "fuel_spend": 12995,
+    "non_fuel": 21145,
+    "utilization_pct": 42.0,
+    "top_merchants": [
+      {
+        "merchant": "Sheetz",
+        "spend": 5634
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 3252
+      },
+      {
+        "merchant": "Speedway",
+        "spend": 4109
+      },
+      {
+        "merchant": "Lowe's",
+        "spend": 9832
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Only 3/15 cards active (24%)",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      8057,
+      8202,
+      8788,
+      9013
+    ]
+  },
+  {
+    "account_id": "COAST-8024",
+    "account_name": "Premier Roadside",
+    "total_spend": 152552,
+    "avg_daily": 5085,
+    "txn_count": 589,
+    "fuel_spend": 95372,
+    "non_fuel": 57180,
+    "utilization_pct": 26.8,
+    "top_merchants": [
+      {
+        "merchant": "Speedway",
+        "spend": 40331
+      },
+      {
+        "merchant": "Valero",
+        "spend": 17540
+      },
+      {
+        "merchant": "BP",
+        "spend": 37501
+      },
+      {
+        "merchant": "Walmart",
+        "spend": 28149
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      36858,
+      36688,
+      39042,
+      40890
+    ]
+  },
+  {
+    "account_id": "COAST-8025",
+    "account_name": "Delta Courier",
+    "total_spend": 72067,
+    "avg_daily": 2402,
+    "txn_count": 332,
+    "fuel_spend": 61169,
+    "non_fuel": 10898,
+    "utilization_pct": 43.0,
+    "top_merchants": [
+      {
+        "merchant": "Exxon",
+        "spend": 24534
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 18073
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 18562
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 3972
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      16648,
+      17740,
+      18769,
+      18959
+    ]
+  },
+  {
+    "account_id": "COAST-8026",
+    "account_name": "Crestview Quick Delivery",
+    "total_spend": 22921,
+    "avg_daily": 764,
+    "txn_count": 98,
+    "fuel_spend": 18302,
+    "non_fuel": 4619,
+    "utilization_pct": 39.8,
+    "top_merchants": [
+      {
+        "merchant": "Exxon",
+        "spend": 7957
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 5130
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 5215
+      },
+      {
+        "merchant": "Ryder Truck Rental",
+        "spend": 2194
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      5494,
+      5462,
+      4893,
+      5278
+    ]
+  },
+  {
+    "account_id": "COAST-8027",
+    "account_name": "Orion Solar Solutions",
+    "total_spend": 55210,
+    "avg_daily": 1840,
+    "txn_count": 159,
+    "fuel_spend": 32318,
+    "non_fuel": 22892,
+    "utilization_pct": 57.6,
+    "top_merchants": [
+      {
+        "merchant": "Exxon",
+        "spend": 11949
+      },
+      {
+        "merchant": "Circle K",
+        "spend": 9914
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 10455
+      },
+      {
+        "merchant": "Sherwin-Williams",
+        "spend": 12330
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "4 transactions at non-network stations",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      13132,
+      12518,
+      13761,
+      13426
+    ]
+  },
+  {
+    "account_id": "COAST-8028",
+    "account_name": "Atlas Roofing Solutions",
+    "total_spend": 22498,
+    "avg_daily": 749,
+    "txn_count": 206,
+    "fuel_spend": 13127,
+    "non_fuel": 9371,
+    "utilization_pct": 33.3,
+    "top_merchants": [
+      {
+        "merchant": "QuikTrip",
+        "spend": 3962
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 3790
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 5375
+      },
+      {
+        "merchant": "Fastenal",
+        "spend": 3112
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      5302,
+      5732,
+      5725,
+      5846
+    ]
+  },
+  {
+    "account_id": "COAST-8029",
+    "account_name": "Metro Sprinkler Systems",
+    "total_spend": 35511,
+    "avg_daily": 1183,
+    "txn_count": 200,
+    "fuel_spend": 13478,
+    "non_fuel": 22033,
+    "utilization_pct": 44.8,
+    "top_merchants": [
+      {
+        "merchant": "QuikTrip",
+        "spend": 5034
+      },
+      {
+        "merchant": "Buc-ee's",
+        "spend": 2906
+      },
+      {
+        "merchant": "Exxon",
+        "spend": 5538
+      },
+      {
+        "merchant": "Lowe's",
+        "spend": 12937
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "3 transactions at non-network stations",
+        "severity": "Low"
+      },
+      {
+        "detail": "Weekend spend up 30%",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      8099,
+      8277,
+      8173,
+      8261
+    ]
+  },
+  {
+    "account_id": "COAST-8030",
+    "account_name": "Southpoint Roadside",
+    "total_spend": 169390,
+    "avg_daily": 5646,
+    "txn_count": 1168,
+    "fuel_spend": 107753,
+    "non_fuel": 61637,
+    "utilization_pct": 37.8,
+    "top_merchants": [
+      {
+        "merchant": "BP",
+        "spend": 51066
+      },
+      {
+        "merchant": "Wawa",
+        "spend": 27286
+      },
+      {
+        "merchant": "RaceTrac",
+        "spend": 29401
+      },
+      {
+        "merchant": "Penske",
+        "spend": 25437
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      41201,
+      41828,
+      43437,
+      43525
+    ]
+  },
+  {
+    "account_id": "COAST-8031",
+    "account_name": "Falcon Construction",
+    "total_spend": 14852,
+    "avg_daily": 495,
+    "txn_count": 128,
+    "fuel_spend": 6313,
+    "non_fuel": 8539,
+    "utilization_pct": 32.5,
+    "top_merchants": [
+      {
+        "merchant": "Sunoco",
+        "spend": 3082
+      },
+      {
+        "merchant": "Wawa",
+        "spend": 1403
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 1828
+      },
+      {
+        "merchant": "Home Depot",
+        "spend": 4574
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      3387,
+      3239,
+      3365,
+      3576
+    ]
+  },
+  {
+    "account_id": "COAST-8032",
+    "account_name": "Frontier Fire Protection",
+    "total_spend": 13370,
+    "avg_daily": 445,
+    "txn_count": 58,
+    "fuel_spend": 5553,
+    "non_fuel": 7817,
+    "utilization_pct": 49.0,
+    "top_merchants": [
+      {
+        "merchant": "Maverik",
+        "spend": 2681
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 1074
+      },
+      {
+        "merchant": "Shell",
+        "spend": 1798
+      },
+      {
+        "merchant": "Northern Tool",
+        "spend": 3315
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      2952,
+      2914,
+      2971,
+      3309
+    ]
+  },
+  {
+    "account_id": "COAST-8033",
+    "account_name": "Westfield Environmental",
+    "total_spend": 58463,
+    "avg_daily": 1948,
+    "txn_count": 213,
+    "fuel_spend": 40962,
+    "non_fuel": 17501,
+    "utilization_pct": 51.2,
+    "top_merchants": [
+      {
+        "merchant": "Wawa",
+        "spend": 13508
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 9290
+      },
+      {
+        "merchant": "Shell",
+        "spend": 18164
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 8014
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      13009,
+      13293,
+      13241,
+      13313
+    ]
+  },
+  {
+    "account_id": "COAST-8034",
+    "account_name": "Keystone Fresh Logistics",
+    "total_spend": 61064,
+    "avg_daily": 2035,
+    "txn_count": 271,
+    "fuel_spend": 46851,
+    "non_fuel": 14213,
+    "utilization_pct": 35.7,
+    "top_merchants": [
+      {
+        "merchant": "RaceTrac",
+        "spend": 21913
+      },
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 9180
+      },
+      {
+        "merchant": "Shell",
+        "spend": 15758
+      },
+      {
+        "merchant": "Penske",
+        "spend": 7542
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      13884,
+      14747,
+      13043,
+      13601
+    ]
+  },
+  {
+    "account_id": "COAST-8035",
+    "account_name": "BlueRidge Roof & Exterior",
+    "total_spend": 28907,
+    "avg_daily": 963,
+    "txn_count": 88,
+    "fuel_spend": 16629,
+    "non_fuel": 12278,
+    "utilization_pct": 32.3,
+    "top_merchants": [
+      {
+        "merchant": "Casey's General Store",
+        "spend": 5450
+      },
+      {
+        "merchant": "Buc-ee's",
+        "spend": 4026
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 7153
+      },
+      {
+        "merchant": "Tractor Supply",
+        "spend": 5499
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Minor pattern change: weekend activity increased",
+        "severity": "Low"
+      },
+      {
+        "detail": "Only 7/23 cards active (33%)",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      6599,
+      6667,
+      6226,
+      6415
+    ]
+  },
+  {
+    "account_id": "COAST-8036",
+    "account_name": "Liberty Pest Solutions",
+    "total_spend": 42320,
+    "avg_daily": 1410,
+    "txn_count": 205,
+    "fuel_spend": 16442,
+    "non_fuel": 25878,
+    "utilization_pct": 59.5,
+    "top_merchants": [
+      {
+        "merchant": "QuikTrip",
+        "spend": 6847
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 3903
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 5692
+      },
+      {
+        "merchant": "ACE Hardware",
+        "spend": 14932
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Weekend spend up 37%",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      10106,
+      10282,
+      9935,
+      10444
+    ]
+  },
+  {
+    "account_id": "COAST-8037",
+    "account_name": "Redline Courier",
+    "total_spend": 209009,
+    "avg_daily": 6966,
+    "txn_count": 628,
+    "fuel_spend": 165120,
+    "non_fuel": 43889,
+    "utilization_pct": 49.9,
+    "top_merchants": [
+      {
+        "merchant": "Casey's General Store",
+        "spend": 60466
+      },
+      {
+        "merchant": "Buc-ee's",
+        "spend": 40320
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 64334
+      },
+      {
+        "merchant": "FleetPride",
+        "spend": 19250
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      50704,
+      50321,
+      53611,
+      53905
+    ]
+  },
+  {
+    "account_id": "COAST-8038",
+    "account_name": "Benchmark Refrigerated Transport",
+    "total_spend": 51988,
+    "avg_daily": 1732,
+    "txn_count": 244,
+    "fuel_spend": 33499,
+    "non_fuel": 18489,
+    "utilization_pct": 45.4,
+    "top_merchants": [
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 11357
+      },
+      {
+        "merchant": "RaceTrac",
+        "spend": 8342
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 13800
+      },
+      {
+        "merchant": "Penske",
+        "spend": 8661
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      11845,
+      12006,
+      12431,
+      11912
+    ]
+  },
+  {
+    "account_id": "COAST-8039",
+    "account_name": "Cobalt Towing",
+    "total_spend": 49096,
+    "avg_daily": 1636,
+    "txn_count": 162,
+    "fuel_spend": 38985,
+    "non_fuel": 10111,
+    "utilization_pct": 31.0,
+    "top_merchants": [
+      {
+        "merchant": "RaceTrac",
+        "spend": 13977
+      },
+      {
+        "merchant": "Valero",
+        "spend": 10366
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 14642
+      },
+      {
+        "merchant": "Ryder Truck Rental",
+        "spend": 5922
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      12090,
+      11933,
+      10682,
+      11813
+    ]
+  },
+  {
+    "account_id": "COAST-8040",
+    "account_name": "Crown Foods",
+    "total_spend": 70454,
+    "avg_daily": 2348,
+    "txn_count": 584,
+    "fuel_spend": 46367,
+    "non_fuel": 24087,
+    "utilization_pct": 33.1,
+    "top_merchants": [
+      {
+        "merchant": "Sunoco",
+        "spend": 20642
+      },
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 11603
+      },
+      {
+        "merchant": "QuikTrip",
+        "spend": 14122
+      },
+      {
+        "merchant": "Walmart",
+        "spend": 10327
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Minor pattern change: weekend activity increased",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      16505,
+      16828,
+      17993,
+      18345
+    ]
+  },
+  {
+    "account_id": "COAST-8041",
+    "account_name": "Pinnacle Moving",
+    "total_spend": 12602,
+    "avg_daily": 420,
+    "txn_count": 47,
+    "fuel_spend": 10136,
+    "non_fuel": 2466,
+    "utilization_pct": 29.1,
+    "top_merchants": [
+      {
+        "merchant": "Exxon",
+        "spend": 3639
+      },
+      {
+        "merchant": "Circle K",
+        "spend": 2020
+      },
+      {
+        "merchant": "Buc-ee's",
+        "spend": 4477
+      },
+      {
+        "merchant": "Walmart",
+        "spend": 1404
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      3023,
+      3017,
+      3197,
+      3300
+    ]
+  },
+  {
+    "account_id": "COAST-8042",
+    "account_name": "Vanguard Rush Logistics",
+    "total_spend": 166692,
+    "avg_daily": 5556,
+    "txn_count": 1241,
+    "fuel_spend": 92313,
+    "non_fuel": 74379,
+    "utilization_pct": 31.9,
+    "top_merchants": [
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 37243
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 25580
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 29490
+      },
+      {
+        "merchant": "Ryder Truck Rental",
+        "spend": 28098
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      40838,
+      42137,
+      42977,
+      42066
+    ]
+  },
+  {
+    "account_id": "COAST-8043",
+    "account_name": "Magellan Plumbing & HVAC",
+    "total_spend": 5711,
+    "avg_daily": 190,
+    "txn_count": 19,
+    "fuel_spend": 3235,
+    "non_fuel": 2476,
+    "utilization_pct": 41.8,
+    "top_merchants": [
+      {
+        "merchant": "Exxon",
+        "spend": 975
+      },
+      {
+        "merchant": "Chevron",
+        "spend": 768
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 1492
+      },
+      {
+        "merchant": "Menards",
+        "spend": 1161
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      1346,
+      1312,
+      1340,
+      1319
+    ]
+  },
+  {
+    "account_id": "COAST-8044",
+    "account_name": "Eastside Roofing",
+    "total_spend": 38872,
+    "avg_daily": 1295,
+    "txn_count": 180,
+    "fuel_spend": 17996,
+    "non_fuel": 20876,
+    "utilization_pct": 49.1,
+    "top_merchants": [
+      {
+        "merchant": "Shell",
+        "spend": 6172
+      },
+      {
+        "merchant": "TA Petro",
+        "spend": 5572
+      },
+      {
+        "merchant": "Sunoco",
+        "spend": 6252
+      },
+      {
+        "merchant": "Fastenal",
+        "spend": 7191
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      9693,
+      9501,
+      9556,
+      9950
+    ]
+  },
+  {
+    "account_id": "COAST-8045",
+    "account_name": "Golden Express",
+    "total_spend": 106852,
+    "avg_daily": 3561,
+    "txn_count": 779,
+    "fuel_spend": 73065,
+    "non_fuel": 33787,
+    "utilization_pct": 26.9,
+    "top_merchants": [
+      {
+        "merchant": "Casey's General Store",
+        "spend": 28919
+      },
+      {
+        "merchant": "Exxon",
+        "spend": 14018
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 30128
+      },
+      {
+        "merchant": "Penske",
+        "spend": 14018
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      25949,
+      26868,
+      26644,
+      28837
+    ]
+  },
+  {
+    "account_id": "COAST-8046",
+    "account_name": "Silver Pool & Spa",
+    "total_spend": 33335,
+    "avg_daily": 1111,
+    "txn_count": 332,
+    "fuel_spend": 16054,
+    "non_fuel": 17281,
+    "utilization_pct": 54.6,
+    "top_merchants": [
+      {
+        "merchant": "Circle K",
+        "spend": 5007
+      },
+      {
+        "merchant": "BP",
+        "spend": 3640
+      },
+      {
+        "merchant": "Chevron",
+        "spend": 7407
+      },
+      {
+        "merchant": "Ferguson Enterprises",
+        "spend": 8837
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Minor pattern change: weekend activity increased",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      7741,
+      7539,
+      7174,
+      7964
+    ]
+  },
+  {
+    "account_id": "COAST-8047",
+    "account_name": "Horizon Landscaping",
+    "total_spend": 70704,
+    "avg_daily": 2356,
+    "txn_count": 249,
+    "fuel_spend": 31568,
+    "non_fuel": 39136,
+    "utilization_pct": 27.6,
+    "top_merchants": [
+      {
+        "merchant": "Sunoco",
+        "spend": 12917
+      },
+      {
+        "merchant": "Wawa",
+        "spend": 5973
+      },
+      {
+        "merchant": "Maverik",
+        "spend": 12678
+      },
+      {
+        "merchant": "Tractor Supply",
+        "spend": 17370
+      }
+    ],
+    "anomalies": [],
+    "trend": [
+      17182,
+      17642,
+      17523,
+      17780
+    ]
+  },
+  {
+    "account_id": "COAST-8048",
+    "account_name": "Pacific Lawn & Garden",
+    "total_spend": 21013,
+    "avg_daily": 700,
+    "txn_count": 107,
+    "fuel_spend": 9303,
+    "non_fuel": 11710,
+    "utilization_pct": 32.4,
+    "top_merchants": [
+      {
+        "merchant": "Sunoco",
+        "spend": 3656
+      },
+      {
+        "merchant": "Sheetz",
+        "spend": 1949
+      },
+      {
+        "merchant": "Love's Travel Stops",
+        "spend": 3698
+      },
+      {
+        "merchant": "Fastenal",
+        "spend": 4456
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "Minor pattern change: non-fuel spend up",
+        "severity": "Low"
+      }
+    ],
+    "trend": [
+      4991,
+      4532,
+      4736,
+      4891
+    ]
+  },
+  {
+    "account_id": "COAST-8049",
+    "account_name": "Trident Rush Logistics",
+    "total_spend": 8399,
+    "avg_daily": 279,
+    "txn_count": 30,
+    "fuel_spend": 6506,
+    "non_fuel": 1893,
+    "utilization_pct": 81.3,
+    "top_merchants": [
+      {
+        "merchant": "Exxon",
+        "spend": 3062
+      },
+      {
+        "merchant": "Pilot Flying J",
+        "spend": 1570
+      },
+      {
+        "merchant": "QuikTrip",
+        "spend": 1874
+      },
+      {
+        "merchant": "AutoZone",
+        "spend": 689
+      }
+    ],
+    "anomalies": [
+      {
+        "detail": "$12K at unidentified merchant",
+        "severity": "Critical"
+      },
+      {
+        "detail": "Off-hours transactions (8 in residential areas)",
+        "severity": "Medium"
+      },
+      {
+        "detail": "6 active cards for 4-truck fleet",
+        "severity": "High"
+      },
+      {
+        "detail": "Unusual merchant categories for Courier & express delivery",
+        "severity": "Medium"
+      }
+    ],
+    "trend": [
+      1259,
+      1679,
+      2309,
+      3149
     ]
   }
 ]
