@@ -296,8 +296,8 @@ function Spark({data,color=C.blue,h=28}) {
 function Md({text}) {
   const bold=s=>{const p=s.split(/\*\*(.*?)\*\*/g);return p.map((x,i)=>i%2?<strong key={i} style={{fontWeight:600,color:C.text}}>{x}</strong>:<span key={i}>{x}</span>);};
   return text.split("\n").map((l,i)=>{
-    if(l.startsWith("## ")) return <h2 key={i} style={{fontSize:16,fontWeight:700,color:C.navy,margin:"14px 0 5px",borderBottom:`1px solid ${C.border}`,paddingBottom:3}}>{bold(l.slice(3))}</h2>;
-    if(l.startsWith("### ")) return <h3 key={i} style={{fontSize:16,fontWeight:700,color:C.blue,margin:"10px 0 3px",textTransform:"uppercase",letterSpacing:"0.03em"}}>{bold(l.slice(4))}</h3>;
+    if(l.startsWith("## ")) return <h2 key={i} style={{fontSize:13,fontWeight:700,color:C.navy,margin:"14px 0 5px",borderBottom:`1px solid ${C.border}`,paddingBottom:3}}>{bold(l.slice(3))}</h2>;
+    if(l.startsWith("### ")) return <h3 key={i} style={{fontSize:12,fontWeight:700,color:C.blue,margin:"10px 0 3px",textTransform:"uppercase",letterSpacing:"0.03em"}}>{bold(l.slice(4))}</h3>;
     if(l.startsWith("- ")||l.startsWith("* ")) return <div key={i} style={{display:"flex",gap:6,margin:"2px 0",paddingLeft:4,lineHeight:1.5}}><span style={{color:C.textLt}}>•</span><span>{bold(l.slice(2))}</span></div>;
     if(!l.trim()) return <div key={i} style={{height:5}}/>;
     return <p key={i} style={{margin:"2px 0",lineHeight:1.5}}>{bold(l)}</p>;
@@ -310,7 +310,7 @@ function DataTabs({acct}) {
   const tabs=[{k:"crm",l:"CRM",i:"📋",n:1},{k:"calls",l:"Calls",i:"📞",n:calls.length},{k:"txn",l:"Transactions",i:"💳",n:t?.cnt||0},{k:"slack",l:"Slack",i:"💬",n:sl.length},{k:"sup",l:"Support",i:"🎫",n:sup.length},{k:"risk",l:"Risk",i:"🛡️",n:r?.fl?.length||0}];
   return <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:10,overflow:"hidden"}}>
     <div style={{padding:"8px 12px",display:"flex",gap:5,overflowX:"auto",borderBottom:`1px solid ${C.border}`,background:C.bg}}>
-      {tabs.map(tb=><button key={tb.k} onClick={()=>setTab(tb.k)} style={{display:"flex",alignItems:"center",gap:5,padding:"5px 10px",border:`1px solid ${tab===tb.k?C.blue:C.border}`,borderRadius:6,background:tab===tb.k?C.blueLt:C.white,color:tab===tb.k?C.blue:C.textMd,fontSize:13,fontWeight:500,cursor:"pointer",fontFamily:"inherit"}}>{tb.i} {tb.l}{tb.n>0&&<span style={{background:tab===tb.k?C.blue:C.border,color:tab===tb.k?C.white:C.textMd,fontSize:11,fontWeight:700,padding:"1px 5px",borderRadius:100}}>{tb.n>999?Math.round(tb.n/1000)+"K":tb.n}</span>}</button>)}
+      {tabs.map(tb=><button key={tb.k} onClick={()=>setTab(tb.k)} style={{display:"flex",alignItems:"center",gap:5,padding:"5px 10px",border:`1px solid ${tab===tb.k?C.blue:C.border}`,borderRadius:6,background:tab===tb.k?C.blueLt:C.white,color:tab===tb.k?C.blue:C.textMd,fontSize:11,fontWeight:500,cursor:"pointer",fontFamily:"inherit"}}>{tb.i} {tb.l}{tb.n>0&&<span style={{background:tab===tb.k?C.blue:C.border,color:tab===tb.k?C.white:C.textMd,fontSize:11,fontWeight:700,padding:"1px 5px",borderRadius:100}}>{tb.n>999?Math.round(tb.n/1000)+"K":tb.n}</span>}</button>)}
     </div>
     <div style={{padding:14,maxHeight:320,overflowY:"auto",fontSize:14,color:C.textMd,lineHeight:1.5}}>
       {tab==="crm"&&<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"6px 20px"}}>
@@ -321,9 +321,9 @@ function DataTabs({acct}) {
           <span style={{fontWeight:600,color:C.text,fontSize:11}}>{c.dt} · {c.rep}</span>
           <span style={{fontSize:12,color:c.sent==="Evasive"||c.sent==="Pushy"?C.red:c.sent==="Mixed"||c.sent==="Neutral"?C.yellow:C.green,fontWeight:600}}>{c.sent}</span>
         </div>
-        <div style={{fontSize:13,color:C.textLt}}>{c.who} · {c.dir} · {c.dur}min</div>
+        <div style={{fontSize:11,color:C.textLt}}>{c.who} · {c.dir} · {c.dur}min</div>
         <div style={{marginTop:4,fontSize:11}}>{c.sum}</div>
-        <div style={{marginTop:4,display:"flex",gap:3,flexWrap:"wrap"}}>{c.tags?.map((tg,j)=><span key={j} style={{fontSize:13,background:C.blueLt,color:C.blue,padding:"1px 5px",borderRadius:3}}>{tg}</span>)}</div>
+        <div style={{marginTop:4,display:"flex",gap:3,flexWrap:"wrap"}}>{c.tags?.map((tg,j)=><span key={j} style={{fontSize:9,background:C.blueLt,color:C.blue,padding:"1px 5px",borderRadius:3}}>{tg}</span>)}</div>
       </div>):<div style={{color:C.textLt,fontStyle:"italic"}}>No recorded calls for this account.</div>)}
       {tab==="txn"&&t&&<div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:10,marginBottom:12}}>
@@ -333,7 +333,7 @@ function DataTabs({acct}) {
         <div style={{fontSize:12,fontWeight:600,color:C.textLt,marginBottom:4}}>TOP MERCHANTS</div>
         {t.m?.map((m,i)=><div key={i} style={{display:"flex",justifyContent:"space-between",padding:"3px 0",borderBottom:`1px solid ${C.border}`}}><span style={{fontWeight:500,color:m.merchant?.includes("UNKNOWN")?C.red:C.text}}>{m.merchant}</span><span style={{fontWeight:600}}>{fmt$(m.spend)}</span></div>)}
         {t.a?.length>0&&<div style={{marginTop:10}}><div style={{fontSize:12,fontWeight:600,color:C.red,marginBottom:4}}>ANOMALIES</div>
-          {t.a.map((a,i)=><div key={i} style={{display:"flex",gap:5,alignItems:"start",marginBottom:3}}><span style={{fontSize:13,fontWeight:700,color:a.severity==="Critical"?C.red:a.severity==="High"?C.orange:C.yellow,background:a.severity==="Critical"?C.redBg:a.severity==="High"?"#FFF7ED":C.yellowBg,padding:"1px 4px",borderRadius:3,whiteSpace:"nowrap"}}>{a.severity}</span><span style={{fontSize:11}}>{a.detail}</span></div>)}
+          {t.a.map((a,i)=><div key={i} style={{display:"flex",gap:5,alignItems:"start",marginBottom:3}}><span style={{fontSize:9,fontWeight:700,color:a.severity==="Critical"?C.red:a.severity==="High"?C.orange:C.yellow,background:a.severity==="Critical"?C.redBg:a.severity==="High"?"#FFF7ED":C.yellowBg,padding:"1px 4px",borderRadius:3,whiteSpace:"nowrap"}}>{a.severity}</span><span style={{fontSize:11}}>{a.detail}</span></div>)}
         </div>}
       </div>}
       {tab==="slack"&&(sl.length?sl.map((s,i)=><div key={i} style={{padding:"8px 0",borderBottom:i<sl.length-1?`1px solid ${C.border}`:"none"}}>
@@ -345,10 +345,10 @@ function DataTabs({acct}) {
       {tab==="sup"&&(sup.length?sup.map((s,i)=><div key={i} style={{padding:"8px 0",borderBottom:i<sup.length-1?`1px solid ${C.border}`:"none"}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:2}}>
           <span style={{fontWeight:600,color:C.text,fontSize:11}}>{s.tid} · {s.subj}</span>
-          <span style={{fontSize:13,fontWeight:600,color:s.st?.includes("Hold")?C.red:s.st==="In Progress"?C.yellow:C.green,background:s.st?.includes("Hold")?C.redBg:s.st==="In Progress"?C.yellowBg:C.greenBg,padding:"1px 5px",borderRadius:3}}>{s.st}</span>
+          <span style={{fontSize:9,fontWeight:600,color:s.st?.includes("Hold")?C.red:s.st==="In Progress"?C.yellow:C.green,background:s.st?.includes("Hold")?C.redBg:s.st==="In Progress"?C.yellowBg:C.greenBg,padding:"1px 5px",borderRadius:3}}>{s.st}</span>
         </div>
         <div style={{fontSize:12,color:C.textLt}}>{s.dt} · {s.pri}</div>
-        <div style={{fontSize:13,marginTop:3}}>{s.res||"Pending"}</div>
+        <div style={{fontSize:11,marginTop:3}}>{s.res||"Pending"}</div>
         {s.sat&&<div style={{fontSize:12,marginTop:2,color:C.textLt}}>{"⭐".repeat(s.sat)}</div>}
       </div>):<div style={{color:C.textLt,fontStyle:"italic"}}>No support tickets for this account.</div>)}
       {tab==="risk"&&r&&<div>
@@ -359,8 +359,8 @@ function DataTabs({acct}) {
           {[["FMCSA Match",r.fm===true?"✅":r.fm===false?"❌":"N/A"],["FMCSA Units",r.fu||"N/A"],["Stated Fleet",r.sf],["Bank Docs",r.bank===true?"✅":String(r.bank)],["Tamper",r.tamp===false?"✅ Clear":String(r.tamp)],["Domain Age",r.dom+"y"],["Reviews",`${r.gr} (${r.grt||"-"}⭐)`],["BBB",r.bbb||"None"],["Payment Score",r.ps+"/100"]].map(([k,v],i)=><div key={i}><div style={{fontSize:11,color:C.textLt,textTransform:"uppercase"}}>{k}</div><div style={{fontWeight:500,color:C.text,fontSize:13}}>{v}</div></div>)}
         </div>
         {r.fl?.length>0&&<><div style={{fontSize:12,fontWeight:600,color:r.fl.length>3?C.red:C.textLt,marginBottom:4}}>FLAGS ({r.fl.length})</div>
-          {r.fl.map((f,i)=><div key={i} style={{fontSize:13,padding:"2px 0 2px 8px",borderLeft:`2px solid ${r.score>50?C.red:C.yellow}`,marginBottom:3}}>{f}</div>)}</>}
-        <div style={{marginTop:10,padding:8,background:r.score>50?C.redBg:C.greenBg,borderRadius:6,fontSize:13,lineHeight:1.4}}>{r.sum}</div>
+          {r.fl.map((f,i)=><div key={i} style={{fontSize:11,padding:"2px 0 2px 8px",borderLeft:`2px solid ${r.score>50?C.red:C.yellow}`,marginBottom:3}}>{f}</div>)}</>}
+        <div style={{marginTop:10,padding:8,background:r.score>50?C.redBg:C.greenBg,borderRadius:6,fontSize:11,lineHeight:1.4}}>{r.sum}</div>
       </div>}
     </div>
   </div>;
@@ -404,7 +404,7 @@ function Portfolio() {
       {[["Total Exposure",fmt$(stats.totalCredit),C.text],["Outstanding",fmt$(stats.totalBal),C.text],["Monthly Spend",fmt$(stats.totalSpend),C.blue],["Avg Utilization",stats.avgUtil+"%",stats.avgUtil>50?C.yellow:C.text],["High Risk",stats.highRisk.length+" accounts",C.red]].map(([l,v,c],i)=>
         <div key={i} style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:12}}>
           <div style={{fontSize:12,color:C.textLt,textTransform:"uppercase",letterSpacing:"0.04em"}}>{l}</div>
-          <div style={{fontSize:22,fontWeight:700,color:c,marginTop:2}}>{v}</div>
+          <div style={{fontSize:20,fontWeight:700,color:c,marginTop:2}}>{v}</div>
         </div>
       )}
     </div>
@@ -412,7 +412,7 @@ function Portfolio() {
     <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:16}}>
       {/* Risk Distribution */}
       <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontSize:18,fontWeight:700,color:C.navy,marginBottom:10}}>Risk Distribution</div>
+        <div style={{fontSize:16,fontWeight:700,color:C.navy,marginBottom:10}}>Risk Distribution</div>
         {riskOrder.filter(k=>stats.riskDist[k]).map(k=>{
           const pct=Math.round(stats.riskDist[k]/stats.totalAccounts*100);
           return <div key={k} style={{marginBottom:6}}>
@@ -429,7 +429,7 @@ function Portfolio() {
 
       {/* Tier Breakdown */}
       <div style={{background:C.white,border:`1px solid ${C.border}`,borderRadius:8,padding:14}}>
-        <div style={{fontSize:18,fontWeight:700,color:C.navy,marginBottom:10}}>By Tier</div>
+        <div style={{fontSize:16,fontWeight:700,color:C.navy,marginBottom:10}}>By Tier</div>
         {Object.entries(stats.byTier).sort((a,b)=>b[1].spend-a[1].spend).map(([tier,d])=>
           <div key={tier} style={{display:"flex",justifyContent:"space-between",padding:"6px 0",borderBottom:`1px solid ${C.border}`,fontSize:11}}>
             <span style={{fontWeight:600,color:C.text}}>{tier}</span>
@@ -674,7 +674,7 @@ export default function App() {
           <div ref={chatScrollRef} style={{flex:"1 1 0",overflowY:"auto",minHeight:0,padding:16}}>
             {msgs.length===0?<div style={{maxWidth:540,margin:"40px auto",textAlign:"center"}}>
               <div style={{fontSize:36,marginBottom:12}}>🔍</div>
-              <h1 style={{fontSize:22,fontWeight:700,color:C.navy,margin:"0 0 6px"}}>Ask about any account or the portfolio</h1>
+              <h1 style={{fontSize:20,fontWeight:700,color:C.navy,margin:"0 0 6px"}}>Ask about any account or the portfolio</h1>
               <p style={{color:C.textLt,fontSize:13,margin:"0 0 20px"}}>I synthesize CRM, calls, transactions, Slack, support, and risk data across {D_CRM.length} accounts.{!apiKey&&" Add your API key via ⚙️ for AI-powered responses."}</p>
               <div style={{display:"flex",flexWrap:"wrap",gap:6,justifyContent:"center"}}>
                 {quickQs.map((q,i)=><button key={i} onClick={()=>setInput(q)} style={{padding:"6px 12px",border:`1px solid ${C.border}`,borderRadius:6,background:C.white,color:C.textMd,fontSize:13,cursor:"pointer",fontFamily:"inherit",transition:"all 0.1s"}}
